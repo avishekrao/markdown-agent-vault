@@ -14,8 +14,8 @@ FORBIDDEN_PATTERNS = [
     r"GDrive",
     r"obd_pers",
     r"johov",
-    r"Жохов",
-    r"Дмитр",
+    r"Zhokhov",
+    r"Dmitr",
     r"click\.ru",
     r"Promopult",
     r"promopult",
@@ -31,7 +31,7 @@ FORBIDDEN_PATTERNS = [
     r"Telegram",
     r"salary",
     r"payroll",
-    r"зарплат",
+    r"wage",
     r"api[_-]?key",
     r"Keychain",
     r"01_now/(ops|projects)/2026-",
@@ -45,6 +45,10 @@ FORBIDDEN_PATTERNS = [
 
 SKIP_PARTS = {".git", "__pycache__"}
 SKIP_SUFFIXES = {".pyc"}
+ALLOWED_SYNC_POLICY_MARKERS = {
+    "dzhokhov/markdown-agent-vault-ru",
+    "github.com/dzhokhov/markdown-agent-vault-ru",
+}
 
 
 def iter_text_files(root: Path):
@@ -74,6 +78,10 @@ def main() -> int:
     for path in iter_text_files(root):
         text = path.read_text(encoding="utf-8", errors="ignore")
         for lineno, line in enumerate(text.splitlines(), 1):
+            if path.relative_to(root).as_posix() == "docs/sync-policy.md" and any(
+                marker in line for marker in ALLOWED_SYNC_POLICY_MARKERS
+            ):
+                continue
             if any(pattern.search(line) for pattern in patterns):
                 hits.append((path.relative_to(root), lineno, line.strip()))
 

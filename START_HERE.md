@@ -1,73 +1,71 @@
 ---
-id: markdown-agent-vault-start-here
+id: vault-methodology-export-v0-start-here
 type: guide
-status: active
-created: 2026-05-02
-updated: 2026-05-02
+status: draft
+created: 2026-04-30
+updated: 2026-05-01
 aliases:
-  - "Start here"
-  - "First vault entry"
+  - "Where to start"
+  - "First entry into the vault"
 tags: [guide, onboarding, vault, methodology]
 source_path: "START_HERE.md"
 ---
 
-# Start Here
+# Where to start
 
-## Summary
+## Essence
 
-This is not a file archive. It is a working environment for a human and an AI agent.
+This is not a file archive, but a work environment for a person and an agent.
 
-## The Idea
+## Details
 
-The agent should not only answer in chat. It should help keep order in files.
+The main idea: the agent should not only answer in the chat, but also maintain order in the files. For this you need:
 
-For that, the vault needs:
-
-- a clear folder structure;
-- writing and routing rules;
+- clear folder structure;
+- recording and routing rules;
 - indexes and links;
 - templates;
-- logs that preserve decisions.
+- skills for repetitive tasks.
 
-If you are new to this method, read [ONBOARDING.md](./ONBOARDING.md). This file is the short entry point; onboarding explains the first full workflow.
+If this is your first time working with this methodology, first go through [onboarding](./ONBOARDING.md). This file is a short entry and the onboarding explains the entire first cycle of work. For a practical pass, ask the agent to use the skill [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).
 
-## Folder Map
+### How folders are organized
 
-- `00_inbox/` - new, unsorted material.
+- `00_inbox/` - everything is new and unassembled.
 - `01_now/` - active projects and current work.
-- `02_domains/` - long-lived areas of life or work.
-- `03_knowledge/` - reusable knowledge.
-- `04_logs/` - decision history, reviews, and timeline.
-- `90_archive/` - completed or obsolete material.
-- `meta/` - rules, templates, and indexes.
-- `skills/` - reusable instructions for recurring task types.
+- `02_domains/` - long-lived areas of life or business.
+- `03_knowledge/` - reused knowledge.
+- `04_logs/` - history of solutions, reviews, chronology.
+- `90_archive/` - complete and outdated.- `meta/` - rules, templates, service indexes.
+- `skills/` - instructions for repetitive task types.
 
-## First Prompt To Your Agent
+### First request to agent
 
-Send:
+Tell the agent:
 
-```text
-Open this folder as my working vault. First read AGENTS.md, START_HERE.md, and ONBOARDING.md. Explain the folder structure, the main rules, and suggest one safe first test.
-```
+> Open this folder as a working storage. Read `AGENTS.md` first, then explain the folder structure to me and suggest where to put my first materials.
 
-## Adding Material
+If this is the first launch, it is better to say:
 
-Put new documents into `00_inbox/` and ask the agent to route them.
+> Open this folder as a working storage. First read `AGENTS.md`, `START_HERE.md` and `ONBOARDING.md`. Explain to me the folder structure, the main rules and suggest a safe first learning step.
 
-Do not manually organize files if you are unsure. The agent should move or copy material only after explaining where it belongs and why, then update indexes and logs.
+If you want to go through onboarding interactively, say:
 
-## Starting A Project
+> Walk me through onboarding with the `vault-onboarding-guide` skill: one step at a time, on a safe learning task, checking files, links and log. Don't let me get into the details of the learning task.
 
-A new active project lives in `01_now/projects/<year>-<slug>/`.
+### How to add materials
 
-It should contain:
+Place new documents in `00_inbox/` and ask the agent to sort them out. Do not move files by hand if you are not sure: the agent must transfer the file, update links and indexes.
 
-- `README.md` - entry point and navigation;
-- `plan.md` - goal, boundaries, milestones, and blockers;
-- `tasks.md` - current execution queue;
-- `context.md` - stable project knowledge;
-- `log.md` - short decision and event history.
+### How to start a project
 
-## Next Step
+A new active project is created in `01 now/projects/<year>-<name>/`. Inside should be:
 
-Follow [ONBOARDING.md](./ONBOARDING.md), or ask the agent to run a safe first test with a small file in `00_inbox/`.
+- `README.md` - login and navigation;
+- `plan.md` - goal, boundaries, milestones and blockers;
+- `tasks.md` — current execution queue;- `context.md` - stable knowledge of the project;
+- `log.md` - ​​a short history of solutions.
+
+## Next step
+
+Ask the agent to carry out the initial setup for your tasks and not change files without explaining what exactly he is going to do. For the first practical launch, use [onboarding](./ONBOARDING.md), the “First training task” section, or the skill [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).

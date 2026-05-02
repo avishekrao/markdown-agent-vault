@@ -1,17 +1,21 @@
-# 00_inbox
+---
+id: inbox-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Incoming materials"
+tags: [index, inbox]
+source_path: "00_inbox/README.md"
+---
 
-## Summary
+#00_inbox
 
-Put new, unsorted material here before routing it into a project, domain, knowledge note, or archive.
+## Essence
 
-## Use For
+Everything new and not yet disassembled goes here.
 
-- source notes;
-- meeting transcripts;
-- files you have not classified yet;
-- imports from other tools;
-- small test documents for onboarding.
+## Details
 
-## Rule
-
-Do not treat inbox material as permanent knowledge. Ask the agent to explain where the material belongs before moving or transforming it.
+The agent parses incoming materials according to the rules from `meta/rules/inbox-processing.md`: extracts knowledge, transfers the result to the correct place, updates indexes and writes a processing log.

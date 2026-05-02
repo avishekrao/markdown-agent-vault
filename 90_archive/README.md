@@ -1,7 +1,21 @@
-# 90_archive
+---
+id: archive-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Archive"
+tags: [index, archive]
+source_path: "90_archive/README.md"
+---
 
-## Summary
+#90_archive
 
-Completed, obsolete, or inactive material lives here.
+## Essence
 
-Do not move active work here until the project has a clear closing note or archived status.
+Completed and obsolete materials that should not interfere with ongoing work.
+
+## Details
+
+The archive is not deleted automatically: it saves the history of decisions and completed projects.

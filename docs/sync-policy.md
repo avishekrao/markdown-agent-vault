@@ -1,35 +1,35 @@
 # Sync Policy With The Russian Version
 
-This repository is the English-first version of the method. The Russian methodology version lives at [dzhokhov/vault-methodology-starter-pack](https://github.com/dzhokhov/vault-methodology-starter-pack).
+This repository is the English mirror/adaptation of the Russian methodology while the project is solo-maintained. The Russian methodology version lives at [dzhokhov/markdown-agent-vault-ru](https://github.com/dzhokhov/markdown-agent-vault-ru).
 
-The two repositories are related, but they are not mirrors.
+The current mode is: **mirror while solo-maintained**.
 
 ## Principle
 
-Sync is manual adaptation, not automatic translation.
+Sync is manual translation and adaptation from Russian to English.
 
-Knowledge management is culturally sensitive. Different audiences may need different examples, naming, depth, tone, and defaults.
+The English repository should match the Russian repository in structure and meaning. Differences are allowed only for language, repository name, links, GitHub description, and culturally adapted wording when a literal translation reads poorly.
 
-## What May Be Shared
+## Direction
 
-- Stable structural patterns.
-- Good quickstart flows.
-- Safer privacy and validation checks.
-- Useful project templates.
-- Bugs that affect both versions.
-- Clear positioning language.
+- Changes from the Russian version are carried into the English version with translation.
+- Changes from the English version are carried back into the Russian version only after an explicit owner decision.
+- After external commits, external maintainers, or an independent English-language audience appear, this policy must be reviewed.
 
-## What Should Not Be Copied Automatically
+## What Must Stay Aligned
 
-- Culturally specific work habits.
-- Personal productivity assumptions.
-- Examples that only make sense in one context.
-- Skill libraries before they are tested with the target audience.
-- Release numbers.
-- GitHub community strategy.
+- Folder structure.
+- Markdown entry documents.
+- `AGENTS.md`.
+- `meta/`, `meta/rules/`, and `meta/templates/`.
+- `skills/*/SKILL.md` and skill reference files.
+- `03_knowledge/`.
+- `examples/`.
+- GitHub service documents.
+- Local validation scripts, unless a script change is only language-specific.
 
 ## Release Policy
 
-Versions do not need to match. A change can be important in one repository and irrelevant in the other.
+Versions do not need to match.
 
-Release notes describe this repository only.
+Release notes describe this repository only, but may state when a release is a full English mirror of the Russian methodology.

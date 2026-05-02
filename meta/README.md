@@ -1,13 +1,25 @@
-# meta
+---
+id: meta-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Rules and templates"
+tags: [index, meta, rules, templates]
+source_path: "meta/README.md"
+---
 
-## Summary
+#meta
 
-Rules, templates, and system indexes live here.
+## Essence
 
-## Templates
+Service section: agent work rules, document templates and methodological instructions.
 
-- [Project README template](./templates/project_README.md)
-- [Project plan template](./templates/project_plan.md)
-- [Project tasks template](./templates/project_tasks.md)
-- [Project context template](./templates/project_context.md)
-- [Project log template](./templates/project_log.md)
+## Details
+
+- [Rules](./rules/)
+- [Templates](./templates/)
+- [Storage life cycle](./vault-lifecycle-sop.md)
+- [Script protocol](./script-protocol.md)
+- [Skill orchestration](./skill-orchestration-owner-only.md)

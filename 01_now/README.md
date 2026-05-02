@@ -1,19 +1,25 @@
-# 01_now
+---
+id: now-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Current work"
+tags: [index, now, projects]
+source_path: "01_now/README.md"
+---
 
-## Summary
+#01_now
 
-Active work lives here.
+## Essence
 
-## Structure
+Active work lives here: projects, operational areas and personal current tasks.
 
-- `projects/` - bounded work with a goal and an end.
+## Details
 
-## Project Standard
+- `projects/` - active projects.
+- `ops/` - long-lived operating circuits.
+- `personal/` - personal obligations of the owner.
 
-Each active project should have:
-
-- `README.md`;
-- `plan.md`;
-- `tasks.md`;
-- `context.md`;
-- `log.md`.
+A new project is created in `projects/<year><slug>/` with files `README.md`, `plan.md`, `tasks.md`, `context.md`, `log.md`.

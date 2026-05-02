@@ -1,114 +1,122 @@
+---
+id: markdown-agent-vault-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-05-02
+aliases:
+  - "Markdown Agent Vault"
+tags: [vault, methodology, starter-pack]
+source_path: "README.md"
+---
+
 # Markdown Agent Vault
 
-Stop starting every AI session from zero.
+## Essence
 
-Markdown Agent Vault is an open-source starter kit for an agent-ready Markdown workspace. It gives you a folder structure, `AGENTS.md`, project templates, routing rules, logs, examples, and small validation scripts so work with an AI agent can live in files instead of only in chat history.
+This is the English mirror/adaptation of `markdown-agent-vault-ru` while the project is solo-maintained. It keeps the same structure and methodology in English: rules, folder structure, templates, skills, logs, and checks for maintaining a file workspace together with an AI agent.
 
-This is the English-first version. It is not a mirror of the Russian `vault-methodology-starter-pack`; it may evolve differently for a different audience.
+The sync policy may change after external contributions or an independent English-language audience appear. For the current policy, see [Sync Policy](./docs/sync-policy.md).
 
-## What Problem It Solves
+## What It Solves
 
-Most AI work starts clean and ends messy:
+A typical AI session often ends with:
 
-- context stays in the chat, not in the workspace;
-- uploaded files get summarized and then forgotten;
-- the next session needs the same explanation again;
-- project state, decisions, tasks, and reusable knowledge drift apart.
+- the context remains in the chat;
+- files are downloaded, retold and forgotten;
+- the next session has to be introduced into the course again;
+- solutions, tasks, knowledge and sources diverge in different places.
 
-This starter kit makes the file system the durable state layer:
+This kit makes the file system a persistent state layer:
 
-- `AGENTS.md` tells the agent how to behave in the workspace;
-- `00_inbox/` holds new material before it is routed;
-- `01_now/` holds active projects and current work;
-- `03_knowledge/` holds reusable knowledge;
-- `log.md`, `plan.md`, `tasks.md`, and `context.md` let a future agent resume work without guessing.
+- `AGENTS.md` explains the workspace rules to the agent;
+- `00_inbox/` accepts new and unprocessed materials;
+- `01_now/` stores active projects and current work;
+- `03_knowledge/` stores reused knowledge;
+- `log.md`, `plan.md`, `tasks.md` and `context.md` help the new session continue without guesswork.
 
-## Who This Is For
+## For whom it is useful
 
-Use this if you:
+The kit is useful if you:
 
-- use file-aware AI assistants or coding agents;
-- keep notes in Markdown or Obsidian;
-- want project state to survive between AI sessions;
-- need a repeatable way to route files, decisions, tasks, and reusable knowledge;
-- prefer plain files over a hosted memory product.
+- you work with agents who can read and change local files;
+- take notes in Markdown or Obsidian;
+- you want the project state to survive individual chats;
+- want a clear order for incoming materials, tasks, solutions and knowledge;
+- you prefer regular files rather than closed “memory” inside the service.
 
 This is not:
 
-- a hosted app;
-- an Obsidian plugin;
-- an automatic semantic memory system;
-- a task tracker replacement;
-- a universal methodology for every culture or workflow.
+- SaaS application;
+- Obsidian plugin;
+- magical memory;
+- replacement of the task tracker;
+- a universal methodology for all people and cultures.
 
-## First 10 Minutes
+## First launch
 
-1. Use this repository as a template or clone it into a safe test folder.
-2. Open the folder in your AI coding agent or local assistant.
-3. Ask the agent:
+1. Clone the repository or use it as a template in a safe test folder.
+2. Open the folder in an agent that can work with files.
+3. Tell the agent:
 
    ```text
-   Open this folder as my working vault. First read AGENTS.md, START_HERE.md, QUICKSTART.md, and ONBOARDING.md. Explain the folder structure, then walk me through one safe test project using a small file in 00_inbox/.
+   Open this folder as your working storage. First read AGENTS.md, START_HERE.md, QUICKSTART.md and ONBOARDING.md. Explain the folder structure, the main rules and walk me through one safe test project with a small file in 00_inbox/.
    ```
+4. Place a small test file in `00_inbox/`.
+5. Ask the agent to create a training project, update links and log the event.
+6. Compare the result with the example [examples/first-session](./examples/first-session/README.md).
 
-4. Put a small test note into `00_inbox/`.
-5. Ask the agent to route it into a project, update links, and write a short log entry.
-6. Open `examples/first-session/` to see what a finished first cycle looks like.
+## Navigation
 
-For a practical walkthrough, see [QUICKSTART.md](./QUICKSTART.md).
-
-## What Is Inside
-
-| Path | Role |
+| Path | Destination |
 |---|---|
-| [`AGENTS.md`](./AGENTS.md) | Operating rules for agents working inside the vault |
-| [`START_HERE.md`](./START_HERE.md) | Short entry point for the first session |
-| [`ONBOARDING.md`](./ONBOARDING.md) | Full onboarding guide |
-| [`QUICKSTART.md`](./QUICKSTART.md) | 5-10 minute practical start |
-| [`00_inbox/`](./00_inbox/README.md) | New, unsorted material |
-| [`01_now/`](./01_now/README.md) | Active projects and current work |
-| [`02_domains/`](./02_domains/README.md) | Long-lived areas of life or work |
-| [`03_knowledge/`](./03_knowledge/README.md) | Reusable knowledge and methods |
-| [`04_logs/`](./04_logs/README.md) | Timeline, reviews, and decision logs |
-| [`90_archive/`](./90_archive/README.md) | Completed or obsolete material |
-| [`meta/`](./meta/README.md) | Rules, templates, and indexes |
-| [`skills/`](./skills/README.md) | Reusable instructions for recurring task types |
-| [`scripts/`](./scripts/README.md) | Local validation scripts |
-| [`examples/first-session/`](./examples/first-session/README.md) | Minimal example of one routed file becoming a project |
+| [AGENTS.md](./AGENTS.md) | Rules for agent operation inside the storage |
+| [START_HERE.md](./START_HERE.md) | Short entry for the first session |
+| [ONBOARDING.md](./ONBOARDING.md) | Detailed onboarding |
+| [QUICKSTART.md](./QUICKSTART.md) | Quick practical start |
+| [00_inbox/](./00_inbox/README.md) | New and unassembled materials |
+| [01_now/](./01_now/README.md) | Active projects and current work |
+| [02_domains/](./02_domains/README.md) | Long lasting areas of life or work |
+| [03_knowledge/](./03_knowledge/README.md) | Reused knowledge and methodologies |
+| [04_logs/](./04_logs/README.md) | Timeline, Reviews and Solution Logs |
+| [90_archive/](./90_archive/README.md) | Completed and outdated |
+| [meta/](./meta/README.md) | Rules, templates and service indexes |
+| [skills/](./skills/README.md) | Skills for repetitive types of tasks |
+| [scripts/](./scripts/README.md) | Local checks |
+| [examples/first-session/](./examples/first-session/README.md) | Minimal example of the first loop |
 
-## How It Differs
+## How is it different?
 
-| Alternative | What it gives you | How this differs |
+| Alternative | What it gives | What makes this kit different |
 |---|---|---|
-| A single `AGENTS.md` | Behavior rules for the agent | This adds a file architecture: inbox, active projects, knowledge, logs, templates, and routing rules |
-| Basic Memory style tools | A memory layer for notes and recall | This is a plain-file operating method for project state, decisions, tasks, and source material |
-| Cline Memory Bank | Project memory files for coding work | This generalizes the idea to a Markdown workspace, including non-code projects, inbox routing, knowledge extraction, and logs |
-| Obsidian plugins | UI features, backlinks, or automation inside Obsidian | This does not require a plugin. It is a folder convention and agent workflow that can be opened by any file-aware assistant |
-| A normal Obsidian vault | Notes and links for a human | This adds explicit agent rules, project state files, lifecycle rules, and checks so an AI session can work safely with the vault |
+| One `AGENTS.md` | Agent Rules of Conduct | The entire file architecture is here: inboxes, projects, knowledge, logs, templates, skills and routing |
+| Basic Memory and similar tools | Layer of memory and search by notes | Here the focus is on the file status of projects, solutions, tasks and sources |
+| Cline Memory Bank | Design Memory Files for Development | Here the approach is broader: not only code, but also research, meetings, knowledge, input and journals |
+| Obsidian plugins | Interface features and automation inside Obsidian | This is not a plugin, but a file convention and operating procedure for the agent |
+| Regular Obsidian Storage | Notes and links for a person | Rules for the agent, project state files, life cycle and checks are added here |
 
 ## Maturity
 
-Current status: early English-first starter kit.
+Status: early English mirror/adaptation of the Russian methodology.
 
-Ready:
+Done:
 
 - portable folder structure;
 - agent rules;
 - project templates;
-- quickstart;
-- onboarding guide;
-- local validation scripts;
-- first minimal example.
+- routing of materials;
+- onboarding;
+- skills;
+- local checks;
+- a minimal example of the first loop.
 
 Not ready yet:
 
-- broad tool-specific setup guides;
-- external user examples;
-- mature skill library;
-- compatibility claims for every agent tool;
-- polished automation around releases and checks.
+- broad instructions for all agent tools;
+- external user examples;- stable compatibility with any agent;
+- mature public contribution model.
 
-## Validate The Pack
+## Check
 
 From the repository root:
 
@@ -117,14 +125,6 @@ python3 scripts/inventory.py
 python3 scripts/check_links.py
 python3 scripts/check_forbidden_markers.py
 ```
-
-These checks help catch broken Markdown links and private markers before a release.
-
-## Related Versions
-
-The Russian methodology version lives at [dzhokhov/vault-methodology-starter-pack](https://github.com/dzhokhov/vault-methodology-starter-pack).
-
-The two repositories are related, but they are not mirrors. Changes are adapted manually when they make sense for both audiences.
 
 ## License
 

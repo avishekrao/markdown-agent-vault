@@ -1,0 +1,3 @@
+display_name: "Vault Onboarding Guide"
+short description: "Conducts an interactive first repository run with an agent."
+Default prompt: "Show me through the onboarding vault: one step at a time, on a secure learning task, with file, link and log verification."

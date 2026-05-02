@@ -2,29 +2,33 @@
 id: scripts-readme
 type: index
 status: active
-created: 2026-05-02
-updated: 2026-05-02
+created: 2026-04-30
+updated: 2026-04-30
 aliases:
-  - "Validation scripts"
+  - Scripts of verification
 tags: [index, scripts, validation]
 source_path: "scripts/README.md"
 ---
 
 # scripts
 
-## Summary
+## The essence
 
-This folder contains small local validation scripts for the portable starter kit.
+Minimum executable layer for checking the portable storage.
 
-## Scripts
+## Details.
 
-- [check_links.py](./check_links.py) - checks relative links to Markdown files.
-- [check_forbidden_markers.py](./check_forbidden_markers.py) - scans for local paths, private markers, tokens, and other strings that should not appear in a public starter kit.
-- [inventory.py](./inventory.py) - prints file count, size, and top-level structure.
+Scripts do not depend on external services and do not contain the ways of the owner.
 
-## How To Run
+### Composition
 
-From the repository root:
+- [check links] py](./check_links.py) checks relative links to `.md` files.
+- [check forbidden markers. py](./check_forbidden_markers.py) is looking for prohibited tokens: local paths, working circuits, tokens and other strings that should not fall into the alienated packet.
+- [inventory] py](./inventory.py) shows the number of files, size and composition of the upper level.
+
+### How to launch
+
+From the root of the package:
 
 ```bash
 python3 scripts/inventory.py
@@ -32,12 +36,12 @@ python3 scripts/check_links.py
 python3 scripts/check_forbidden_markers.py
 ```
 
-Or pass the root path explicitly:
+Or point the way clearly:
 
 ```bash
 python3 scripts/check_links.py /path/to/vault
 ```
 
-## Next Step
+## Next step.
 
-Run all three scripts after meaningful package changes.
+After any changes to the package, run all three scripts.

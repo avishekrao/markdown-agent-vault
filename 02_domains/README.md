@@ -1,7 +1,21 @@
-# 02_domains
+---
+id: domains-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Permanent areas"
+tags: [index, domains]
+source_path: "02_domains/README.md"
+---
 
-## Summary
+#02_domains
 
-Long-lived areas of life or work live here.
+## Essence
 
-Use this for things that outlive a single project, such as an ongoing business area, personal domain, research area, or operational responsibility.
+Permanent areas of life or business that last longer than individual projects.
+
+## Details
+
+If knowledge survives a particular project, but is in a sustainable area, it should live here or in `03_knowledge/`, and not inside a temporary project.

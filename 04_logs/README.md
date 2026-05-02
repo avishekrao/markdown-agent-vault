@@ -1,7 +1,21 @@
-# 04_logs
+---
+id: logs-readme
+type: index
+status: active
+created: 2026-04-30
+updated: 2026-04-30
+aliases:
+  - "Magazines"
+tags: [index, logs]
+source_path: "04_logs/README.md"
+---
 
-## Summary
+#04_logs
 
-Vault-level logs, reviews, and timeline notes live here.
+## Essence
 
-Project-specific event history should usually live in the project's own `log.md`.
+Timeline is stored here: decision logs, reviews and events.
+
+## Details
+
+Logs are not a place for much analysis. A short event and a link to a detailed file are written to the log.

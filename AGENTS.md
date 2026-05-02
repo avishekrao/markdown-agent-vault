@@ -2,85 +2,103 @@
 id: agents-rules
 type: note
 status: active
-created: 2026-05-02
-updated: 2026-05-02
+created: 2026-04-30
+updated: 2026-04-30
 aliases:
-  - "Agent rules"
+  - "Agent Rules"
   - "AGENTS.md"
 tags: [rules, llm, workflow, vault]
 source_path: "AGENTS.md"
 ---
 
-# AGENTS.md - Agent Rules For A File-Based Vault
+# AGENTS.md - agent rules for file storage
 
-## Core Principle
+## Main principle
 
-This vault works only when important documents are reachable through indexes, links, and routing rules.
+This repository only works when every important document can be reached through pointers, links, and routing rules.
 
-When an agent creates or changes a file, it must update the relevant indexes and record important decisions in the right log.
+If the agent creates or changes a file, it must update the associated indexes and briefly record the decision in the appropriate log.
 
-## Folder Map
+## Folder map
 
-| Folder | Purpose |
+| Folder | Destination |
 |---|---|
-| `00_inbox/` | New, unsorted material |
-| `01_now/` | Active work: projects and current tasks |
-| `02_domains/` | Long-lived areas of life or work |
-| `03_knowledge/` | Reusable knowledge, methods, and references |
-| `04_logs/` | Timeline, reviews, and decision logs |
-| `90_archive/` | Completed or obsolete material |
-| `meta/` | Rules, templates, and indexes |
-| `skills/` | Reusable instructions for recurring task types |
+| `00_inbox/` | New and unsorted materials |
+| `01_now/` | Active work: projects, current areas, personal tasks |
+| `02_domains/` | Permanent areas of life or business |
+| `03_knowledge/` | Reused knowledge, methodologies, help |
+| `04_logs/` | Timeline, Reviews, Solution Logs |
+| `90_archive/` | Completed and outdated |
+| `meta/` | Rules, templates, service indexes |
+| `skills/` | Skills: instructions for repetitive task types |
 
-## Loading Context
+## Loading context
 
-Before answering, the agent identifies the task type and reads the smallest useful context.
+Before responding, the agent determines the task type and reads the minimum required context:
 
-| Task type | Read first |
-|---|---|
-| Active project | `01_now/projects/<project>/README.md`, then `context.md`, and when needed `plan.md`, `tasks.md`, `log.md` |
-| Long-lived area | `02_domains/README.md`, then the relevant section |
-| Reference or method | `03_knowledge/README.md`, then the relevant file |
-| Creating or editing a file | `meta/README.md`, then the relevant template or rule |
-| Processing inbox material | `00_inbox/README.md` |
-| Reviewing or cleaning the vault | `scripts/README.md` and relevant indexes |
+| Task type | What to read |
+|---|---|| Active project | `01_now/projects/<project>/README.md`, then `context.md`, if necessary `plan.md`, `tasks.md`, `log.md` |
+| Permanent area | `02_domains/README.md`, then the profile section |
+| Help or Methodology | `03_knowledge/README.md`, then the desired file |
+| Write or change a file | `meta/rules/write-protocol.md` |
+| Task Routing | `meta/rules/task-routing.md` |
+| Processing of incoming materials | `meta/rules/inbox-processing.md` |
+| Checking and cleaning storage | `meta/rules/vault-review.md` |
+| Creating temporary files | `meta/rules/cleanup-by-design.md` |
 
-If the project or area is ambiguous, ask one short clarifying question and do not read multiple unrelated work areas to guess.
+If a circuit or project is ambiguous, the agent asks one short question for clarification and does not read the content files of different circuits in a row.
 
-## Creating A Project
+## Creating a project
 
-New active projects live in `01_now/projects/<year>-<slug>/`.
+A new active project is created in `01 now/projects/<year>-<slug>/`.
 
-Each project should have:
+The project should have:
 
-- `README.md` - entry point, purpose, and navigation;
-- `plan.md` - goal, boundaries, milestones, and blockers;
-- `tasks.md` - current execution queue;
-- `context.md` - stable project knowledge;
-- `log.md` - short event and decision history.
+- `README.md` - input, meaning and navigation;
+- `plan.md` - goal, boundaries, milestones, blockers;
+- `tasks.md` — current execution queue;
+- `context.md` - stable knowledge of the project;
+- `log.md` - a short history of solutions.
 
-`plan.md` keeps direction. `tasks.md` keeps only the current execution queue. History lives in `log.md`, not in `tasks.md`.
+`plan.md` stores direction and milestones. `tasks.md` stores only current actions. History does not live in `tasks.md`; she lives in `log.md`.
 
-## After Writing Files
+## After writing the file
 
-After creating or substantially changing a file, the agent checks:
-
-1. Does the Markdown file have suitable front matter when the vault expects it?
-2. Is the folder `README.md` updated?
-3. Should project `plan.md`, `context.md`, `log.md`, or `tasks.md` be updated?
+After a file is created or significantly modified, the agent checks:1. Is there correct service markup at the beginning of the `.md` file.
+2. Is the `README.md` section updated?
+3. Should I update `plan.md`, `context.md`, `log.md` or `tasks.md`.
 4. Do relative links work?
-5. Can a future agent find the file through navigation?
-6. Is there a lifecycle plan for temporary files?
+5. Will the new agent find this file through navigation.
+6. Is there a lifecycle plan for temporary files.
 
-## Do Not
+## Skills
 
-- Do not create files without a clear place and purpose.
-- Do not leave important files without links from indexes.
-- Do not store long-lived knowledge inside a temporary project.
-- Do not mix personal obligations, delegated work, and project goals in one list.
-- Do not delete logs or inbox material without an explicit owner request.
-- Do not read personal mail, messengers, or external services without an explicit owner request.
+The skills are located in `skills/<name>/SKILL.md`. The agent reads the skill only when the task matches its description.
 
-## First Step
+Basic skills:
 
-On first launch, read `START_HERE.md`, this file, and `QUICKSTART.md`, then briefly explain how the vault is organized.
+- `meeting-processing` - processing of meetings and transcripts;
+- `research` - research and recording of the result;
+- `ilyakhov-editor` - text editing;
+- `parking` — saving the return point;
+- `resume` — return to the saved task;
+- `new-dialog-handoff` - safe transition to a new chat;
+- `owner-only-dev-orchestrator` - managing development tasks with minimal involvement of the owner;
+- `test-gates` — checking changes;
+- `release-rollback` - release and rollback.
+
+## Response language
+
+The agent responds in the user's language. If he uses a technical term, he explains it in simple terms the first time it is mentioned.
+
+## Prohibitions
+
+- Do not create files without a clear location and purpose.
+- Do not leave important documents without a reference from the indexes.- Do not store long-lived knowledge inside a temporary project.
+- Do not put personal obligations, delegations and project goals into one list.
+- Do not delete logs and incoming materials without an explicit request from the owner.
+- Do not read personal mail, instant messengers or external services without a direct request.
+
+## Next step
+
+If this is the first run, the agent should read `START_HERE.md`, this file, and `meta/rules/write-protocol.md`, then briefly explain to the owner how the storage works.

@@ -43,7 +43,7 @@ Triggers:
 - Simplicity > smartness. Difficult things in simple language
 
 ** Forbidden:**
-- Water, stamps, stationery (drive through the skill ilyakhov-editor)
+- Empty words, cliches, and bureaucratic phrasing
 - "In the modern world ...", "It's no secret that ...", "We all know ..."
 - Clickbait headlines without content
 - General advice without specifics
@@ -81,7 +81,7 @@ Save in: `content/YYYY-MM-DD-slug-{platform}.md`
 
 ### Step 4: Final check
 
-- Run through the skill `ilyakhov-editor` for cleaning
+- Check the text for empty words, cliches, bureaucratic phrasing, and lack of specifics
 - Verify compliance with the platform profile
 - Check for specifics (digits, cases, tools)
 
@@ -129,7 +129,6 @@ Save in: `content/YYYY-MM-DD-slug-{platform}.md`
 
 ## Related skills
 
-- [ilyakhov-editor](../ilyakhov-editor/SKILL.md) - final cleaning of texts]
 - Signal Selection Skill or Separate List of Ideas – A Source of Topics for Expert Content, If It’s in Storage
 - [translation-editorial](../translation-editorial/SKILL.md)] Translation-editorial signals into content
 - [case-forensics](../case-forensics/SKILL.md) — extracting cases for content]

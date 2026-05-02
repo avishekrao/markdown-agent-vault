@@ -22,7 +22,7 @@ Go through each point before giving the result to the user.
 - [ ] Specified type of visualization (table / graph / diagram / bullet points)
 - [ ] Speaker notes: 3-5 sentences (context + transition + anticipation of questions)
 
-## Purity of text (Ilyakhov for slides)
+## Text clarity
 
 - [ ] No introductory designs ("should be noted", "important to emphasize")
 - [ ] There are no imposed assessments without facts ("unique", "effective", "innovative")

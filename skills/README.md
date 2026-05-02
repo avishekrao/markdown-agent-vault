@@ -26,7 +26,6 @@ Vault Custom Skills Index. Used as an entry point to select a domain workflow be
 - [release-rollback](./release-rollback/SKILL.md) — release readiness and safe rollback]
 - [meeting-processing](./meeting-processing/SKILL.md) — meeting processing, decision/action retrieval, routing into a circuit.]
 - [research](./research/SKILL.md) — source-first discourse with distortion compensation and mandatory fixation of the result.]
-- [ilyakhov-editor](./ilyakhov-editor/SKILL.md) — editing in infostyle.]
 - [landing-copywriter ](./landing-copywriter/SKILL.md) — creating Hero blocks and the first landing screen.]
 - [personal-brand-content](./personal-brand-content/SKILL.md) — expert content for a personal brand or author’s channel].
 - [slide-copywriter ](./slide-copywriter/SKILL.md) — content for slides and presentations.]

@@ -79,7 +79,6 @@ Basic skills:
 
 - `meeting-processing` - processing of meetings and transcripts;
 - `research` - research and recording of the result;
-- `ilyakhov-editor` - text editing;
 - `parking` — saving the return point;
 - `resume` — return to the saved task;
 - `new-dialog-handoff` - safe transition to a new chat;

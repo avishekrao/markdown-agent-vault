@@ -47,7 +47,7 @@ Vault (`skills/`) is the only source of truth for custom skills. Cowork can hold
 
 Skills synchronized in Cowork via `rsync` copies in `skills-plugin`:
 
-meeting-processing, research, parking, resume, ilyakhov-editor, landing-copywriter, meta-ads-bulk, meta-ads-campaign-builder, meta-ads-campaign-structure, meta-ads-creative, meta-ads-creative-factory, meta-ads-optimizer, meta-ads-preflight, meta-ads-reporter, meta-ads-transport-api, meta-ads-transport-human, meta-ads-transport-ui.
+meeting-processing, research, parking, resume, landing-copywriter, meta-ads-bulk, meta-ads-campaign-builder, meta-ads-campaign-structure, meta-ads-creative, meta-ads-creative-factory, meta-ads-optimizer, meta-ads-preflight, meta-ads-reporter, meta-ads-transport-api, meta-ads-transport-human, meta-ads-transport-ui.
 
 Full list and logic of exceptions: `03_knowledge/cowork-skill-sync-research.md`.
 

@@ -3,7 +3,7 @@ aliases:
   - "Landing Copywriter"
   - "Hero and Key Landing Blocks"
 name: landing-copywriter
-description: "Hero (H1 + subhead + proof + CTA) and key landing blocks using the 7-step protocol: Schwartz awareness → Trout / Ries positioning core with a competitor substitution litmus test → 10 H1 candidates → a 5-axis filter (brand-ownable, falsified, visualized, rhythm, Ilyakhov RU filter) → 3 finalists → Hero-block → checklist (5-second test, one-specific noun, one-language)." Combines Trout/Ries, Ogilvy, Harry Dry, Ilyakhov. Use when asked: “write Hero”, “landing title”, “main page”, “positioning”, “headline”, “landing page copywriting”, “correlate Hero”, “3 variants H1”, “value proposition”, “hero block”, “make H1”, “H1 and subhead”, “tagline for the main”; or when the product gives + ICP + traffic and waits for the text at the top of the page. Guard-behaviour: If you don’t have one of four (product/ICP/traffic/differentiator) – don’t generate, ask one four-point question. Not for editing (ilyakhov-editor), not for brainstorm (marketing:content-creation).
+description: "Hero (H1 + subhead + proof + CTA) and key landing blocks using the 7-step protocol: Schwartz awareness → Trout / Ries positioning core with a competitor substitution litmus test → 10 H1 candidates → a 5-axis filter (brand-ownable, falsified, visualized, rhythm, text clarity) → 3 finalists → Hero-block → checklist (5-second test, one-specific noun, one-language). Combines Trout/Ries, Ogilvy, and Harry Dry. Use when asked: “write Hero”, “landing title”, “main page”, “positioning”, “headline”, “landing page copywriting”, “correlate Hero”, “3 variants H1”, “value proposition”, “hero block”, “make H1”, “H1 and subhead”, “tagline for the main”; or when the product gives + ICP + traffic and waits for the text at the top of the page. Guard-behaviour: If you don’t have one of four (product/ICP/traffic/differentiator) – don’t generate, ask one four-point question. Not for brainstorm (marketing:content-creation)."
 ---
 
 # Landing Copywriter – Hero and Key Landing Blocks
@@ -27,7 +27,7 @@ Triggers - in `description` above. If the user provides **product + ICP + traffi
 And he asks you to write something at the top of the page -- it's you.
 
 What you're not doing:
-- Do not edit the finished text of someone else in the infostyle - this is `ilyakhov-editor`.
+- Do not do deep editing of long finished text; your zone is the top of the landing page and the adjacent proof blocks.
 - Don’t make a general content plan or blog articles – this is `marketing:content-creation`.
 - You don’t build or design – your job is the text and its justification.
 - Do not write long sections about the company, history, team – your field is above fold plus
@@ -96,7 +96,7 @@ which is [benefit], unlike [alternative] because [differentiator]. >>
 - [ ] Message-match: Does it match the ads that drive traffic?
 - [ ] Brand-specific noun in H1: Is there a specific noun-artifact of a product (act, escrow, cabinet, integration) rather than an abstract promise?
 - [ ] Hero in one language: no English inserts in Russian Hero and vice versa.
-- [ ] RU filter: no cripples (solutions, optimization, seamless, ecosystem), no stop words, verb in the asset.
+- [ ] Text clarity filter: no calques (solutions, optimization, seamless, ecosystem), no empty words, active verb in the asset.
 - [ ] Numbers/names/verbs are at least one word.
 
 ## Open questions for the owner
@@ -154,7 +154,7 @@ Each of the 10 candidates is mentally run through 5 filters:
 2. **Falsify (Harry Dry): Can it be verified as true/false?
 3. **Brand-ownable** (Trout/Ries): Frame a competitor - sounds? If so, drop it.
 4. **Rhythm + clarity**: 5-9 words in Russian, active verb, no official ballast.
-5. **RU-filter** (Ilyakhov): no stop words and cripples (“solutions”, “optimization”, “seamless”,
+5. **Text clarity filter**: no empty words or calques (“solutions”, “optimization”, “seamless”,
    “unique”, “efficient”, “quality”, “innovative”, “ecosystem”.
 
 After the run, there are 3 finalists left. You put them in the output pattern.
@@ -217,7 +217,7 @@ One title is a guarantee of failure. If a product has multiple value props, it�
 Landings, not just Hero.
 
 **The Russian language requires its own amendments.** Calques from English ("solutions", "seamless", etc.).
-“ecosystem” are weaknesses that both Ilyakhova and Harry Dry fail. An active verb,
+“ecosystem” are weaknesses that make the text less specific. An active verb,
 A specific noun, a short sentence is your basic tools.
 
 ## What you don't do in silence
@@ -249,12 +249,11 @@ It breaks the canon of the project, it does not pass, even if it sounds good by 
 
 Once Hero is ready and validated, the next step is usually one of:
 
-- **Edit the final text** → Pass it to `ilyakhov-editor`, explicitly say: "Hero ready,
-  Run through the infostyle, especially check the stop words and active verbs.
+- **Edit the final text** → suggest a separate editorial pass: check specificity,
+  empty words, active verbs, and brand voice.
 - **Positioning-based slides** → forward to `slide-copywriter`.
 - **Running advertising for this Hero** → transmit to the profile advertising or content skill
   Positioning as a context.
 - **Message test** → Give the instructions for the 5-second test and a list of questions; you do not do the test.
 
-Do not try to edit your own infostyle or collect advertising campaigns – this is
-Other skills, they have their own discipline.
+Do not try to assemble advertising campaigns yourself; other skills own that work.

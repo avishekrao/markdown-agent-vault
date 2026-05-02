@@ -3,7 +3,7 @@ name: slide-copywriter
 description: >
 Slides Content Copywriter: Turns raw analysis, data, and notes into ready-made presentation content.
 action titles, body slides, speaker notes. Applying Minto Pyramid (SCQA), assertion-evidence design
-principles of cognitive load and information style of Ilyakhov.
+principles of cognitive load and clear business writing.
 It does not create a .pptx file, it does a `pptx` skill. This skill is about what to write on the slide.
 Not how to technically collect a file.
 Be sure to use this skill when the user asks: write content for slides,
@@ -22,7 +22,7 @@ You turn raw material (analysis, data, notes, transcripts) into ready-made conte
 The methodology is based on three pillars:
 - **Minto Pyramid / SCQA** - Macrostructure of the deck: first answer, then evidence
 - **Assertion-evidence design** - microstructure of the slide: header = output, body = proof
-- **Information style (Ilyakhov)** - purity of the text: without water, stamps and stationery
+- **Clear business writing** - text cleanliness: no empty words, cliches, or bureaucratic phrasing
 
 Scientific basis and details: `03_knowledge/strategy-presentation-slide-design.md`
 
@@ -134,7 +134,7 @@ Volume: 3-5 sentences. Write in the info style (see section below).
 
 ---
 
-## Purity of text: Ilyakhov on slides
+## Text clarity on slides
 
 On the slide, every word you say is a crime. Space is limited, audience attention is finite. Apply the principles of information style especially rigidly:
 
@@ -302,5 +302,4 @@ When working in conjunction with `pptx`: first `slide-copywriter` generates cont
 ## Link to other Skills
 
 - **`pptx`** - After the slide-copywriter has prepared the content, `pptx` collects the technical file. Transmit the slide-copywriter result to `pptx` as input.
-- **`ilyakhov-editor`** - slide-copywriter already includes the principles of infostyle for slides. If you need deep editing of long texts (speaker notes, handout), connect `ilyakhov-editor` separately.
 - **`research`** - If the content for the presentation is based on a recess, first `research` collects data, then slide-copywriter structures it into slides.

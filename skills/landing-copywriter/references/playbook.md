@@ -61,7 +61,7 @@ The three "yes/yes/no" headline is strong.
 
 ---
 
-## RU filter (Ilyakhov)
+## RU text clarity filter
 
 **Stop words and tracings that will fail any Hero:**
 - Solutions (as synonymous with products)
@@ -109,7 +109,7 @@ The three "yes/yes/no" headline is strong.
 - **Brand-ownable - mandatory filter.**Trout/Ries Lacmus passes every candidate.
 - **One Hero = one quantum of meaning.** Several value props = several landing pages.
 - The Schwartz stage is a solution, not a theory. You write blindly without her.
-- ** Russian . English.** Kalki fail both Ilyakhov and Harry Dry.
+- **Russian is not English.** Calques make the text weaker and less specific.
 
 ---
 

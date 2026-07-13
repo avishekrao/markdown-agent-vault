@@ -45,9 +45,9 @@ FORBIDDEN_PATTERNS = [
 
 SKIP_PARTS = {".git", "__pycache__"}
 SKIP_SUFFIXES = {".pyc"}
-ALLOWED_SYNC_POLICY_MARKERS = {
-    "dzhokhov/markdown-agent-vault-ru",
-    "github.com/dzhokhov/markdown-agent-vault-ru",
+ALLOWED_PUBLIC_REPO_MARKERS = {
+    "dzhokhov/markdown-agent-vault",
+    "github.com/dzhokhov/markdown-agent-vault",
 }
 
 
@@ -78,9 +78,7 @@ def main() -> int:
     for path in iter_text_files(root):
         text = path.read_text(encoding="utf-8", errors="ignore")
         for lineno, line in enumerate(text.splitlines(), 1):
-            if path.relative_to(root).as_posix() == "docs/sync-policy.md" and any(
-                marker in line for marker in ALLOWED_SYNC_POLICY_MARKERS
-            ):
+            if any(marker in line for marker in ALLOWED_PUBLIC_REPO_MARKERS):
                 continue
             if any(pattern.search(line) for pattern in patterns):
                 hits.append((path.relative_to(root), lineno, line.strip()))

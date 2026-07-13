@@ -3,69 +3,85 @@ id: vault-methodology-export-v0-start-here
 type: guide
 status: draft
 created: 2026-04-30
-updated: 2026-05-01
+updated: 2026-07-13
 aliases:
   - "Where to start"
-  - "First entry into the vault"
+  - "First vault entry"
 tags: [guide, onboarding, vault, methodology]
 source_path: "START_HERE.md"
 ---
 
-# Where to start
+# Where to Start
 
 ## Essence
 
-This is not a file archive, but a work environment for a person and an agent.
+This is not a file archive. It is a working environment for a human and an agent.
 
 ## Details
 
-The main idea: the agent should not only answer in the chat, but also maintain order in the files. For this you need:
+The main idea: the agent should not only answer in chat, but also keep the files orderly. For that you need:
 
-- clear folder structure;
-- recording and routing rules;
+- a clear folder structure;
+- write and routing rules;
+- current memory instead of blind trust in archive;
 - indexes and links;
 - templates;
-- skills for repetitive tasks.
+- skills for recurring task types.
 
-If this is your first time working with this methodology, first go through [onboarding](./ONBOARDING.md). This file is a short entry and the onboarding explains the entire first cycle of work. For a practical pass, ask the agent to use the skill [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).
+If this is your first time using the methodology, start with [ONBOARDING.md](./ONBOARDING.md). This file is the short entry point; onboarding explains the full first work cycle. For a guided pass, ask the agent to use [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).
 
-### How folders are organized
+### Folder Layout
 
-- `00_inbox/` - everything is new and unassembled.
+- `00_inbox/` - new and unsorted materials.
 - `01_now/` - active projects and current work.
 - `02_domains/` - long-lived areas of life or business.
-- `03_knowledge/` - reused knowledge.
-- `04_logs/` - history of solutions, reviews, chronology.
-- `90_archive/` - complete and outdated.- `meta/` - rules, templates, service indexes.
-- `skills/` - instructions for repetitive task types.
+- `03_knowledge/` - reusable knowledge.
+- `04_logs/` - decision history, reviews, timeline.
+- `90_archive/` - completed and outdated material.
+- `meta/` - rules, templates, service indexes.
+- `skills/` - instructions for recurring task types.
 
-### First request to agent
+### First Request to the Agent
 
 Tell the agent:
 
-> Open this folder as a working storage. Read `AGENTS.md` first, then explain the folder structure to me and suggest where to put my first materials.
+> Open this folder as a working vault. First read `AGENTS.md`, then explain the folder structure and suggest where to put my first materials.
 
-If this is the first launch, it is better to say:
+For the first launch, use a slightly fuller request:
 
-> Open this folder as a working storage. First read `AGENTS.md`, `START_HERE.md` and `ONBOARDING.md`. Explain to me the folder structure, the main rules and suggest a safe first learning step.
+> Open this folder as a working vault. First read `AGENTS.md`, `START_HERE.md`, and `ONBOARDING.md`. Explain the folder structure, the main rules, and suggest the first safe learning step.
 
-If you want to go through onboarding interactively, say:
+If you want interactive onboarding, say:
 
-> Walk me through onboarding with the `vault-onboarding-guide` skill: one step at a time, on a safe learning task, checking files, links and log. Don't let me get into the details of the learning task.
+> Walk me through onboarding with the `vault-onboarding-guide` skill: one step at a time, on a safe learning task, with checks for files, links, and log. Do not let me drift into the details of the learning task.
 
-### How to add materials
+### Choose a Mode
 
-Place new documents in `00_inbox/` and ask the agent to sort them out. Do not move files by hand if you are not sure: the agent must transfer the file, update links and indexes.
+If you are keeping a personal local vault, start with the ordinary first loop: file in `00_inbox/` -> training project -> links -> log.
 
-### How to start a project
+If you want a separate GitHub repository for a product, team, client, or another long-lived area, use contour-repository mode:
 
-A new active project is created in `01 now/projects/<year>-<name>/`. Inside should be:
+- read the [guide](./docs/github-contour-repositories.md);
+- copy [repository-manifest.yml](./meta/templates/repository-manifest.yml) and [contour_repository_AGENTS.md](./meta/templates/contour_repository_AGENTS.md);
+- compare with the [example](./examples/github-contour-repository/README.md);
+- run `python3 scripts/validate_contour_repo.py examples/github-contour-repository`.
 
-- `README.md` - login and navigation;
-- `plan.md` - goal, boundaries, milestones and blockers;
-- `tasks.md` — current execution queue;- `context.md` - stable knowledge of the project;
-- `log.md` - ​​a short history of solutions.
+### Adding Materials
 
-## Next step
+Put new documents in `00_inbox/` and ask the agent to process them. Do not move files by hand if you are not sure: the agent should move the file, update links, and update indexes.
 
-Ask the agent to carry out the initial setup for your tasks and not change files without explaining what exactly he is going to do. For the first practical launch, use [onboarding](./ONBOARDING.md), the “First training task” section, or the skill [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).
+### Starting a Project
+
+A new active project is created through [`project-creator`](./skills/project-creator/SKILL.md) in `01_now/projects/<year>-<slug>/`. The agent writes the plan, quality criteria, execution queue, context, log, and project README.
+
+The project should contain:
+
+- `README.md` - entry point and navigation;
+- `plan.md` - goal, boundaries, owner intent, quality criteria, milestones, and blockers;
+- `tasks.md` - current execution queue;
+- `context.md` - durable project knowledge;
+- `log.md` - short decision history.
+
+## Next Step
+
+Ask the agent to perform initial setup for your work and to explain any file changes before making them. For the first practical run, use [ONBOARDING.md](./ONBOARDING.md), the "First training task" section, or [`vault-onboarding-guide`](./skills/vault-onboarding-guide/SKILL.md).

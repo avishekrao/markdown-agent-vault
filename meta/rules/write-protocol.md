@@ -3,22 +3,23 @@ id: write-protocol
 type: rules
 status: active
 created: 2026-03-30
-updated: 2026-04-15
+updated: 2026-07-13
 aliases:
-  - "File Recording Protocol"
+  - "File write protocol"
   - "Write protocol"
 tags: [rules, write, files, vault-hygiene]
 source_path: "meta/rules/write-protocol.md"
 ---
 
-# Create and modify files in vault
+# Creating and Changing Files in the Vault
 
-## The essence
-Unified set of rules when recording: frontmatter, structure, links, index updates, anti-fragmentation. Used when creating or editing any* vault file.
+## Essence
 
-## 1.YAML frontmatter (mandatory)
+Unified write rules: frontmatter, structure, links, index updates, anti-fragmentation, memory updates, and lifecycle handling. Applies when creating or editing any vault file.
 
-Each markdown file must have:
+## 1. YAML Frontmatter
+
+Every Markdown file must have:
 
 ```yaml
 id: unique-slug
@@ -27,216 +28,213 @@ status: active | draft | archived
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
 aliases:
-  - "Short Russian Name" #1 Distinct at Vault Level
+  - "Short readable name"
 tags: [relevant, tags]
-source path: "path/from/root/vault." md
+source_path: "path/from/vault/root.md"
 ```
 
 Optional fields:
+
 ```yaml
-freshness: evergreen | seasonal | ephemeral # by default seasonal
-expired: YYYY-MM-DD #date review
+freshness: evergreen | seasonal | ephemeral
+expires: YYYY-MM-DD
 knowledge_criticality: low | medium | high | critical
 verification_status: unverified | in_review | verified_by_me | verified_by_team
 curation_mode: none | manual_edit | llm_explicit_request | imported_not_curated
 ```
 
-`verification_status: verified_by_me` is placed **only after manual user verification **. For imports by default: `unverified` + `imported_not_curated`.
+Use `verification_status: verified_by_me` only after manual user verification. Imports default to `unverified` and `imported_not_curated`.
 
-### Confidence Ladder for Field Observations (MUST)
+### 1.1. Pattern Confidence for Field Observations
 
-Observations from meetings, interviews and field studies are labeled with the `confidence` field in the frontmatter. This ***** editorial check (`verification_status`) is the degree to which an observation by independent sources is confirmed.
+Observations from meetings, interviews, and field studies can use `pattern_confidence`. This is not editorial verification; it is the maturity of an observation across independent sources.
 
 ```yaml
-confidence: single-source | emerging | confirmed | canonical
+pattern_confidence: single-source | emerging | confirmed | canonical
 ```
 
-| Level | Criterion | What can be done |
-|---------|----------|-----------------|
-| `single-source` | One meeting/one person | Record as field note. Do not refer to it as fact in decisions. |
-| `emerging` | 2-3 independent sources | Formulate a hypothesis. Refer to the “emerging pattern” clause. |
-| `confirmed` | 4+ source OR different types (meeting + data + mirror) | Use as a working invariant in context.md. |
-| `canonical` | Confirmed, not refuted ≥3 months | Domain knowledge. Building product solutions. |
+| Level | Criterion | Allowed use |
+|---|---|---|
+| `single-source` | One meeting or one person | Record as a field note. Do not use as fact in decisions. |
+| `emerging` | 2-3 independent sources | Formulate as a hypothesis or emerging pattern. |
+| `confirmed` | 4+ sources or mixed evidence types | Use as a working invariant in `context.md`. |
+| `canonical` | Confirmed and not refuted for 3+ months | Treat as domain knowledge. |
 
-**Increase:** When a new confirmation appears, update `confidence`, add a source link, record the date.
-**Decrease:** When a counterexample is detected, lower `confidence` and record a counterexample.
-**Default: * Any observation from a single meeting receives `single-source`. No exceptions.
+Raise confidence when new evidence appears. Lower it when a counterexample appears. A single-meeting observation defaults to `single-source`.
 
-Applied to: `field-notes-*.md`, observations in contact cards, hypotheses in research files.
-It does not apply to: actual data (dates, figures, quotes), design decisions, vault rules.
+Older files may contain `confidence: single-source | emerging | confirmed | canonical`; do not mass-migrate them. On first meaningful touch, move that value to `pattern_confidence`.
 
-Methodology: [research-systematic-field-notes-methodology.md](../../03_knowledge/research-systematic-field-notes-methodology.md)
+### 1.2. Trust Fields for Important Claims
 
-## 2. Recommended body structure
+Important claims that shape current work, decisions, current picture, tasks, risks, constraints, or hypotheses get a minimal trust block:
 
-- `## Essence` – one sentence: what it is and why (for LLM search)
-- `## Details` – Main Content
-- `## Next step` - if applicable
+```yaml
+claim_type: observed | stated_by_user | stated_by_other | inferred | decision | assumption | hypothesis | preference | constraint | plan | risk | status | historical
+source:
+  - ""
+evidence:
+  kind: direct_user_statement | direct_quote | meeting_note | document_fact | agent_inference | repeated_pattern | external_source | unknown
+  strength: high | medium | low
+confidence: high | medium | low
+last_verified: YYYY-MM-DD
+write_policy: auto | suggest | human_review_required | locked
+```
 
-** Self-sufficiency test: ** If LLM reads only this file, will it understand what it is about and who is useful to? If not, the file is incomplete.
+Rules:
 
-## 3. The reference standard in vault (Obsidian)
+- `confidence: high | medium | low` is trust in a specific claim.
+- `pattern_confidence` is maturity of a repeated observation.
+- `verification_status` is editorial or human file verification.
+- `claim_type: inferred`, `assumption`, `hypothesis`, and `plan` must not be used as facts without additional basis.
+- If there is no verifiable basis, use `evidence.kind: unknown` and `evidence.strength: low`.
+- Strategic decisions, goals, memory rules, and decision-status changes use `write_policy: human_review_required` or `locked`.
 
-- Only clickable Markdown links: `[Comprehensible anchor](./relative-path.md)`
-- Anchor is a human-readable description, not a file name
-- Relative paths (`./`, `../`) with `.md` extension
-- Prohibited: paths in backticks as links, file-name anchors (`[context.md](...)`), bare paths
+## 2. Recommended Body Structure
 
-### Verification of Relative Paths (Critical)
+- `## Essence` - one sentence explaining what this is and why it exists.
+- `## Details` - main content.
+- `## Next Step` - if useful.
 
-Before writing a link, calculate the depth:
-1. Determine the source file level from the vault root (by `/`)
-2. Each `../` raises one level
-3. After all `../` should be the root vault, then the absolute path.
+Self-sufficiency test: if an agent reads only this file, can it understand what the file is about and when to use it? If not, the file is incomplete.
 
-Example: file at depth 4 (`01_now/projects/foo/tasks/task.md`) → reference to `00_inbox/bar.md` requires **4** level of lift: `../../../../00_inbox/bar.md`.
+## 3. Link Standard
 
-**Rule:** After writing the link, mentally allow the path. If you use a script, turn on `os.path.exists()`.
+- Use clickable Markdown links: `[Readable anchor](./relative-path.md)`.
+- Anchor text should be human-readable, not just a filename.
+- Use relative paths with `.md` extension.
+- Avoid bare paths and paths in backticks when a clickable link is expected.
 
-## 4. Links in dialogue (Cowork/Claude Code)
+Before writing a relative link, count directory depth. After writing, mentally resolve the path or use a script to confirm it exists.
 
-Any file in the user's response is a clickable `computer://` link:
-- `[Clear name](computer:///sessions/.../path/to/file.ext)]`
-- Do not leave bare paths in bectics
+## 4. Mandatory Protocol After Writing
 
-## 5. Mandatory protocol after recording
+After creating or substantially changing a file, perform all applicable steps in this order: slow layers first, fast layers last.
 
-Once a file has been created or substantially modified, follow **all applicable steps** in the specified order (slow layers → fast layers):
+1. **Update project `plan.md`** if Goal, Intent Lock, Owner Interaction Policy, Milestone, Appetite, Drift Guard, Contingency, Acceptance, or Quality Criteria changed.
+2. **Update project `context.md`** only when a durable invariant appears: term, metric, source of truth, or constraint.
+3. **Update working context** if `README.md` or `context.md` declares one. This is the recomputed current-state layer: what matters now, what changed, what is stale, what was refuted.
+4. **Write a short `log.md` entry.** Date, what happened, what decision changed, link to details. Keep it to 3-7 bullets. Detailed content belongs in a separate file.
+5. **Update `tasks.md`** only for execution queue: active step, next step, waiting. Reflection belongs in `plan.md`, not in `tasks.md`.
+6. **Update delegations** when the decision concerns another person in a contour: `01_now/ops/<contour>/delegations/<person-slug>.md`.
+7. **Update personal tasks** when the owner gains an external personal obligation unrelated to the project: `01_now/personal/tasks.md`.
+8. **Update the folder `README.md`** so a future agent can discover the file.
+9. **Check cross-links** in related documents.
+10. **Update `01_now/README.md`** only when a project is created or closed.
+11. **Routing self-check:** if a future session asks about this document, can it find it through README -> plan -> context -> working context/file?
+12. **Write to the memory ledger** if trust, freshness, status, claim type, conflict, working context, or a strategic decision changed: [ledger.md](../memory/ledger.md).
+13. **Clean up temporary files** after knowledge integration.
 
-1. ** Update the `plan.md` project** (if Goal, Milestone, Appetite, Drift Guard, Contingency or Acceptance have changed). `plan.md` is a slow project contract; it is ruled before anything leaks into `context.md` or `tasks.md`. See [Rule 12 of AGENTS. md](../../AGENTS.md).
-2. **Update the project `context.md`** - only when a stable invariant appears (term, metric, SoT, limitation). Episodic meeting content does not go here; it lives in `<meeting>.md` under `## Mentioned in passing` with a canonical tag. See [task-routing.md](./task-routing.md).
-3. **Record in `log.md` project.** Short entry: date, what happened, what decision, link to artifact. Maximum 3-7 bullets. Detailed content is in a separate artifact, not log.md. See [AGENTS.md Rule 5](../../AGENTS.md).
-4. **Update `tasks.md`** - Active/Next/Waiting only. The thinking (“to understand what to do with X”) goes not here, but in `plan.md` under the corresponding milestone. Goal, Milestone, Contingency in `tasks.md` are prohibited.
-5. **Update delegation** – if the decision/step concerns the delegate, update the line to `01_now/ops/<contour>/delegations/<person-slug>.md` (one line + link to the external tracker as SoT). If the external tracker already operates in the circuit as a living working layer, do not start the second living layer in the general markdown loop: update the external tracker, and touch `delegations/` only if it is a short index or an archive transition layer. See [task-routing.md §delegations](./task-routing.md).
-6. **Update personal `01_now/personal/tasks.md`* – if there is an external obligation of the owner, not related to the project. Ambient capture without MR-diff.
-7. **Update the `README.md` section** where the file is located. Criterion: After reading README, LLM learns that the file exists.
-8. **Cross-links** – Check backlinks in related documents.
-9. **Update `01_now/README.md`* – only if the project is new or closed.
-10. **Self-check routing:** If tomorrow a new LLM session asks about the subject of a document, will it find it through the README → plan.md → context.md → file? No, missed a step.
-11. **Temporary artifact cleansing* – delete intermediate files after knowledge integration.
+Order matters: `plan` -> `context` -> working context -> `log` -> `tasks` -> delegations/personal -> `README` -> memory ledger. Slow layers must lead fast layers.
 
-** Order critical:** `plan` → `context` → `log` → `tasks` → `delegations/personal` → `README`. The slow layers are always ahead of the fast ones. Disorder = drift of the plan over the old contract.
+### 4.1. Writing in a GitHub Contour Repository
 
-## 5.1. Mid-flight sync for project files
+If the root contains `repository-manifest.yml`, read it first and apply [github-contour-repositories.md](./github-contour-repositories.md).
 
-Don’t wait for the end of the task if you have a condition that will be difficult to recover from chat.
+Special rules:
 
-### When to update `log.md`
+- `may_edit_without_asking` means the agent may prepare a branch and change request, not silently edit the main branch.
+- Check `agent_policy.ask_before` and `agent_policy.never_commit` before writing.
+- Stop and ask before private data, deletion, moving, access rules, `AGENTS.md`, `repository-manifest.yml`, or another contour is touched.
+- After a meaningful change, add a short `log.md` entry if the manifest allows it.
+- Before a change request, run checks from `validation.required_before_change_request`.
+- The change request description must explain what changed, why, touched files, private-data risk, checks run, and what a human must confirm.
 
-`log.md` is updated immediately upon event, not only upon finalization:
-- a decision has been made;
-- completed milestone;
-- Blocker found;
-- Changed plan/approach;
-- An important artifact has been created or a noticeable risk has been closed.
+## 5. Mid-Flight Sync
 
-`log.md` answers the question: What happened and why?
+Do not wait until the end of a long task if current state would be hard to reconstruct from chat.
 
-### When to update `context.md`
+Update `log.md` immediately when:
 
-`context.md` is updated only when **persistent knowledge** is available for future sessions:
-- new term, invariant, limitation;
-- Metrics of success, quality criteria;
+- a decision is made;
+- a milestone is completed;
+- a blocker appears;
+- plan or approach changes;
+- an important file is created or a visible risk is closed.
+
+Update `context.md` only when durable knowledge appears:
+
+- new term, invariant, or constraint;
+- success metric or quality criterion;
 - source-of-truth document or mandatory dependency;
-- New stable agreement on how the project works.
+- stable agreement about how the project works.
 
-`context.md` answers the question: **What is now considered consistently true about the project**.
+Update working context when it is declared and the event changes what currently matters. It is not chronology and does not replace `context.md`.
 
-### What not to do
+Do not turn `log.md` into a backlog. Do not write temporary turns into `context.md`. Do not keep several significant decisions only in chat.
 
-- Do not convert `log.md` to backlog.
-- Do not write in `context.md` temporary turns and small chronology.
-- Do not keep a few significant decisions/finds only in chat until the end of a long cycle.
+Mandatory trigger: if the next step cannot be reliably restored from project files, or several unsaved decisions/finds have accumulated, update `log.md`, `context.md`, and working context as applicable before continuing.
 
-### Mandatory Sync Trigger
+## 6. `plan.md` and `tasks.md`
 
-If the next step cannot be reliably restored from the project files, or several unsaved solutions / finds have already accumulated in the chat, the agent must first update `log.md` and / or `context.md`, and then continue to work.
+Every active project has two task-level files:
 
-## `plan.md` + `tasks.md`: contract and execution queue
+- `plan.md` - slow contract: Goal, Intent Lock, Owner Interaction Policy, Non-goals, Appetite, Source of truth, Milestones with Acceptance, Quality Criteria, Blockers, Drift Guard, Contingency, Review Protocol.
+- `tasks.md` - fast execution queue: Current Milestone, Active/Next/Waiting steps, local Exit Criteria, short Drift Guard.
 
-From April 2026, any active project must have two files:
+New projects are created through [project-creator](../../skills/project-creator/SKILL.md). The skill extracts context from the chat or command, checks data ownership, writes starter files, and updates indexes. Manual assembly is acceptable only when the skill is unavailable.
 
-- **`plan.md` is a slow contract. Goal, Non-goals, Appetite, Source of Truth, Milestones (with Acceptance), Drift Guard, Contingency. It changes when goals or boundaries change.
-- **`tasks.md` is a fast execution queue. Only Active/Next/Waiting agent steps in the current milestone.
+When creating a project or substantially changing `plan.md`, the agent writes the plan and quality criteria itself. The owner must not be asked to write plan items, invent criteria, or review the plan line by line. If the foundation cannot be chosen safely, ask one packet of up to three short questions about goal, boundary, priority, cost of error, or source of truth. Each question includes the agent's recommended option and asks the owner to confirm or correct it.
 
-Full methodology: [task-routing-methodology-2026-04.md](../../03_knowledge/task-routing-methodology-2026-04.md)]. Tactical checklist: [task-routing.md](./task-routing.md)] Rules of ownership: [AGENTS.md Rules 11–14](../../AGENTS.md)]
+Project modes:
 
-### Regime of the project
+- `operational` - work that does not change an executable system.
+- `development` - code, scripts, tests, schemas, data contracts, runtime, CI, build, or release work.
 
-Before deep work, the agent must select one mode (as specified in `plan.md`, not `tasks.md`):
+`tasks.md` rules:
 
-- `operational`: Normal tasks without changing the executable system.
-- `development` – code, scripts, tests, schema/data contracts, runtime, CI, build/release.
+- State `Task Mode: operational | development`.
+- Keep exactly one `Active` / `Active Step`.
+- Work outside `Active` or `Next` requires updating `plan.md` when the vector changes, or `tasks.md` when only the queue changes.
+- Do not accumulate a long done list; history belongs in `log.md`.
+- Do not put `Goal`, `Milestones`, `Contingency`, `Appetite`, or `Quality Criteria` in `tasks.md`.
+- Do not put vague reflection such as "figure out X" in `tasks.md`.
 
-### Mandatory Rules for `tasks.md`
+Drift protocol:
 
-- In the file, clearly indicate `Task Mode: operational | development`.
-- Keep only one `Active`/`Active Step`.
-- If you are going to work outside of `Active` or `Next`, first update `plan.md` (if the vector changes) or `tasks.md` (if only the queue).
-- Don’t dig up a long list of completed items: the story should live in `log.md`.
-- **Prohibition:** `Goal`, `Milestones`, `Contingency`, `Appetite` — all in `plan.md`, not in `tasks.md`.
-- ** Prohibition:** lines such as "understand what to do with X", "deal with Y" is not execution, it is reflection; its place in the corresponding milestone in `plan.md` as an open question.
-- **Prohibition:** Delegating to an employee ("Dima will do X") is in `delegations/<person-slug>.md`. Personal obligations - in `01_now/personal/tasks.md`.
+1. Edit `plan.md` first.
+2. Add one `log.md` line: "drift: was X, became Y, reason Z".
+3. Then update `tasks.md` and resume work.
 
-### Structure of `tasks.md` for `operational`
+## 7. Anti-Fragmentation
 
-Minimum: `Active`, `Next`, `Waiting`, `Backlog`. Without `Goal`, it's in `plan.md`.
+- Use an existing folder first.
+- Do not create a subfolder for 1-2 files.
+- Create a new subfolder only when 5+ files are expected or the group is long-lived.
+- Keep depth no deeper than 3-4 levels from the logical root.
+- Serial files use order in filenames, not nested folders.
 
-### Structure of `tasks.md` for `development`
+## 8. File Lifecycle
 
-Minimum: `Active Step`, `Exit Criteria`, `Drift Guard (short)`, `Next`, `Backlog`. `Current Milestone` refers to the corresponding clause in `plan.md` and does not duplicate it. Blockers – `plan.md §Blockers` as a first-class entity, the `Blocked` section does not exist in `tasks.md`.
+- Unknown destination -> `00_inbox/`.
+- Active work -> `01_now/`.
+- Long-lived area -> `02_domains/`.
+- Reference knowledge -> `03_knowledge/`.
+- Diary or chronology -> `04_logs/`.
+- Outdated or completed -> `90_archive/`.
 
-### Drift protocol (mandatory)
+When creating any new file, database, cache, or dump, decide:
 
-If the agent changes the approach, scope, order of implementation, or finds that the current milestone no longer leads to the goal:
-1. First, edit **`plan.md`** (changed Milestone, Acceptance, Drift Guard, Contingency or Non-goals).
-2. One line in `log.md` is "drift: was X, became Y, cause Z."
-3. Only then update `tasks.md` and resume work.
+- **TTL:** when can it be deleted? 7d / 30d / 90d / manual / never.
+- **Cleanup:** who deletes it and how? script / manual review / cron.
+- **Registration:** register it in [cleanup-registry.md](../cleanup-registry.md) when it is not a one-off file.
 
-Disorder = the contract changes under the guise of execution, and the future agent will not find a trace of the solution.
+When processing a file from `00_inbox/`, write to `00_inbox/PROCESSING_LOG.md`: what was processed, where it went, and whether status is processed or partial.
 
-## 6. Anti-fragmentation folders
+## 9. Deletion and Archiving
 
-- Use the existing folder first. New - only if the group is otherwise lost.
-- Prohibited: Subfolder for 1-2 files.
-- New Subfolder: Minimum 5+ files expected or long-lived outline.
-- Depth: no deeper than 3-4 levels from the logical root.
-- Serial files are the order in the name (`YYYY-MM-DD type number. md`), not in the folder structure.
+- When moving to `90_archive/`, remove or mark archived links in README and context files.
+- When deleting a file, clear all links to it.
 
-## 7. File life cycle
+## 10. Temporary Sources
 
-- It's unclear where `00_inbox/`
-- Analysis: active work → `01_now/`, area → `02_domains/`, help → `03_knowledge/`, diary → `04_logs/`, outdated → `90_archive/`
-- `01_now` only stores the operating room (1-4 weeks). Extract it to `03_knowledge/`.
-- Regulations [Vault Lifecycle SOP](../vault-lifecycle-sop.md)]
-
-## 8. Lifecycle Artifacts (MUST)
-
-When you create any new file, database, cache, dump – immediately answer:
-- **TTL:** When can this be removed? (7d / 30d / 90d / manual / never)
-- **Cleanup:** Who will delete and how? (script vault-hygiene / manual vault review / cron)
-- **Register:** register it in [cleanup-registry.md](../cleanup-registry.md) if it is not a one-time file.
-
-If the file from `00_inbox/` is written to `00_inbox/PROCESSING_LOG.md` after processing:
-What is processed, where is transferred, status ( partial processed / ). partial).
-Details: [Inbox](./inbox-processing.md) processing protocol]
-
-Complete rules: [Cleanup by Design](./cleanup-by-design.md)]
-
-## 9. Deletion and archiving
-
-- When moving to `90_archive/`, delete/tag `[archived]` links in README and context.md.
-- When you delete a file, clear all links to it.
-
-## 10. Integrating knowledge from time sources
-
-- References to temporary files cannot be left in the final documents.
+- Do not leave links to temporary files in final documents.
 - Temporary sources are disposable material for synthesis.
-- After integration, delete intermediate files, check for no links to them.
+- After integration, remove intermediate files and verify that links to them are gone.
 
-## 11. Reverse synchronization after migration
+## 11. Reverse Synchronization After Migration
 
-After any migration or change of data format:
-1. Find all the scripts, templates, regulations that generate the affected data.
-2. Update each to create data in a new format.
-3. Test: “A new agent launches imports from scratch – will it get a new format?” The migration is not complete.
+After any migration or data-format change:
+
+1. Find scripts, templates, and rules that generate the affected data.
+2. Update each one to produce the new format.
+3. Test the fresh-start path: if a new agent runs the process from scratch, will it get the new format? If not, migration is incomplete.

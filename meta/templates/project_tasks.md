@@ -1,11 +1,11 @@
 ---
 id: <yyyy-mm-dd>-<project-slug>-tasks
-type: project
+type: tasks
 status: active
 created: <YYYY-MM-DD>
-updated: 2026-04-15
+updated: 2026-07-10
 aliases:
-  - "Project Task Template"
+  - "Project tasks template"
 tags: [project, tasks]
 source_path: "<path-before-migration-or-current>"
 knowledge_criticality: low
@@ -16,82 +16,111 @@ curation_mode: none
 
 # Tasks
 
-## The essence
+## Essence
 
-**Execution-line project. Only the steps the agent is going to take in the current milestone. `tasks.md` does not store history (for this there is `log.md`), does not store a plan (for this there is `plan.md`), does not store delegation (for this there is `ops/<contour>/delegations/<slug>.md`), does not store personal obligations of the owner (for this there is `01_now/personal/tasks.md`).
+Execution queue for the project. This file is derived from `plan.md`: current milestone, one active step, local exit criteria, short drift guard, and next step.
 
-Full methodology: [task-routing-methodology-2026-04.md](../../03_knowledge/task-routing-methodology-2026-04.md)]. Rules of ownership: [AGENTS.md Rules 10–12](../../AGENTS.md)]
+`tasks.md` does not store history (`log.md` does), does not store the plan (`plan.md` does), does not store delegations (`ops/<contour>/delegations/<slug>.md` does), and does not store the owner's personal obligations (`01_now/personal/tasks.md` does).
+
+Methodology: [task-routing-methodology-2026-04.md](../../03_knowledge/task-routing-methodology-2026-04.md).
 
 ## Prohibitions
 
-- **Can't:** `Goal`, `Milestones`, `Contingency`, `Appetite` — all in `plan.md`.
-- **Not:** `Blocked` section – blockers live in `plan.md §Blockers` as a first-class entity with `Bx` cards (see §5.4 methodology).
-- **You can't:** lines like "understand what to do with X", "deal with Y" is a reflection, its place in `plan.md` under the corresponding milestone as an open question.
-- **No:** Delegating to an employee ("Dima will do X") is in `ops/<contour>/delegations/<person-slug>.md`.
-- **No:** The owner's personal obligation is in `01_now/personal/tasks.md`.
+- Do not put `Goal`, `Milestones`, `Contingency`, `Appetite`, or `Quality Criteria` here; they belong in `plan.md`.
+- Do not create a `Blocked` section; blockers live in `plan.md §Blockers` as first-class `Bx` cards.
+- Do not write vague lines such as "understand what to do with X" or "figure out Y"; that is reflection and belongs in `plan.md` under the relevant milestone.
+- Do not write "ask the owner to make the plan", "ask for criteria", or "approve the items". If a question changes goal, boundaries, source of truth, or cost of error, handle it in `plan.md`; otherwise the agent records a safe assumption.
+- Do not put employee delegations here.
+- Do not put the owner's personal external obligations here.
 
 ## Task Mode
 
-Select one mode (it repeats `task_mode` from `plan.md`) and delete the second template below:
-- `operational` – Normal tasks without changing the executable system
-- `development` – code, scripts, tests, schema/data contracts, runtime, CI, build/release
+Choose one mode (matching `task_mode` in `plan.md`) and delete the other template:
 
-Keep only one `Active`/`Active Step` at any given time.
+- `operational` - work that does not change an executable system.
+- `development` - code, scripts, tests, schemas, data contracts, runtime, CI, build, or release work.
 
----
+Keep exactly one `Active` / `Active Step` at any moment.
 
-## Template `operational`
-
-### Active
-- [ ] <one current step >>
-
-### Next
-- [ ] <2-5 next steps within the current milestone from plan.md >>
-
-### Waiting
-- [ ] <external dependencies / answers >>
-
-### Backlog
-- [ ] Not now, but not now. >>
-
-### Done
-- [x] <last 3-5 completed steps, no more - the old goes to log.md >>
+`Current Milestone` is required in both modes and must reference `M<N>` from `plan.md`. If the current step does not follow from that milestone, update `plan.md` first.
 
 ---
 
-## Template `development`
+## Template: `operational`
 
 ### Current Milestone
-Reference to Millstone from `plan.md`: `M<N> - <name >>`. Don’t duplicate purpose and acceptance, they’re there.
 
-### Active Step
-- [ ] <one current step >>
+Reference to milestone from `plan.md`: `M<N> - <name>`. Do not duplicate purpose or acceptance here.
 
-### Why?
-Why this step is now in the context of the milestone >>
+### Active
+
+- [ ] <one current step>
 
 ### Exit Criteria
-- <observable completion condition 1 >>
-- <observable completion condition 2 >>
+
+- <local observable completion condition>
 
 ### Drift Guard (short)
-- Where to go without re-planning in this step >>
+
+- <short excerpt from Drift Guard / Non-goals / Quality Criteria in plan.md>
 
 ### Next
-- [ ] <2-5 next steps >>
+
+- [ ] <1-3 next steps within the current milestone>
 
 ### Backlog
-- [ ] Later. >>
+
+- [ ] <not now, but still within the current milestone>
 
 ### Done
-- [x] <last 3-5 steps >>
 
-## Drift protocol
+- [x] <last 3-5 completed steps only; older history goes to log.md>
 
-If you’re going to work outside of `Active`/`Next`, or if you realize that the current milestone is no longer leading to your goal, you’re going to:
-1. `plan.md` (milestones, acceptance, drift guard, contingency)
-2. One line in `log.md` is "drift: was X, became Y."
+---
+
+## Template: `development`
+
+### Current Milestone
+
+Reference to milestone from `plan.md`: `M<N> - <name>`. Do not duplicate purpose or acceptance here.
+
+### Active Step
+
+- [ ] <one current step>
+
+### Why
+
+<why this step matters now within the current milestone>
+
+### Exit Criteria
+
+- <observable completion condition 1>
+- <observable completion condition 2>
+
+### Drift Guard (short)
+
+- <short excerpt from Drift Guard / Non-goals / Quality Criteria in plan.md>
+
+### Next
+
+- [ ] <1-3 next steps within the current milestone>
+
+### Backlog
+
+- [ ] <later, but still within the current milestone>
+
+### Done
+
+- [x] <last 3-5 steps>
+
+## Drift Protocol
+
+If work moves outside `Active`/`Next`, or the current milestone no longer leads to the goal:
+
+1. Edit `plan.md` first: milestones, acceptance, quality criteria, owner-interaction policy, drift guard, or contingency.
+2. Add one line in `log.md`: "drift: was X, became Y".
 3. Only then update `tasks.md` and resume work.
 
-## Next step.
-Select `Task Mode`, remove the extra template and leave one `Active` step.
+## Next Step
+
+Select `Task Mode`, delete the extra template, name `Current Milestone` from `plan.md`, and leave one active step.

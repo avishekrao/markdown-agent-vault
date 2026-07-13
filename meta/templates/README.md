@@ -1,52 +1,59 @@
 ---
+id: templates-readme
+type: index
+status: active
+created: 2026-04-06
+updated: 2026-07-13
 aliases:
-  - Templates Index.
+  - "Templates index"
+tags: [index, templates]
+source_path: "meta/templates/README.md"
 ---
 
-# README: `meta/templates`
+# Templates
 
-## The essence
-Auto-updated file index for the `meta/templates` directory.
+## Essence
 
-## Details.
-- Updated: 2026-04-06
-- Files (without hidden and without `README.md`): 15
-- Subdirectories: 0
-- All document templates have added trust fields (`knowledge_criticality`, `verification_status`, `verified_by_me`, `curation_mode`) with conservative default values.
+Reusable templates for projects, memory, meetings, GitHub contour repositories, and development workflow files.
 
-### Top-level files
-- [Exit interview: <file>](./exit-interview.md)]
-- [AGENT WORKFLOW](./agent_workflow.md) template]
-- [CHANGELOG](./changelog.md) template]
-- [ICIDENT RUNBOOK](./incident_runbook.md) template]
-- [Task template for legal, personnel and financial matters](./legal_hr_fin_task.md)]
-- [<Name>](./note.md)]
-- [<Task name>](./operational_task.md)
-- [Owner decision packet](./owner_decision_packet.md) template]
-- [Context](./project_context.md)
-- [Project Log](./project_log.md)
-- [<Project>](./project_README.md)]
-- [RELEASE CHECKLIST](./release_checklist.md) template]
-- [Tasks](./project_tasks.md) - dual mode template: `operational` / `development`
-- [<Recipe name>](./recipe.md)]
-- [TEST PLAN](./test_plan.md) template]
+## Project Templates
 
-### Subdirectory
-- No subdirectories.
+- [Project README](./project_README.md)
+- [Project plan](./project_plan.md)
+- [Project tasks](./project_tasks.md)
+- [Project context](./project_context.md)
+- [Project log](./project_log.md)
 
-### Full list of files (recursively)
-- [Exit interview: <file>](./exit-interview.md)]
-- [AGENT WORKFLOW](./agent_workflow.md) template]
-- [CHANGELOG](./changelog.md) template]
-- [ICIDENT RUNBOOK](./incident_runbook.md) template]
-- [Task template for legal, personnel and financial matters](./legal_hr_fin_task.md)]
-- [<Name>](./note.md)]
-- [<Task name>](./operational_task.md)
-- [Owner decision packet](./owner_decision_packet.md) template]
-- [<Project>](./project_README.md)]
-- [Context](./project_context.md)
-- [Project Log](./project_log.md)
-- [RELEASE CHECKLIST](./release_checklist.md) template]
-- [Tasks](./project_tasks.md) - dual mode template: `operational` / `development`
-- [<Recipe name>](./recipe.md)]
-- [TEST PLAN](./test_plan.md) template]
+## Memory and Meeting Templates
+
+- [Memory card](./memory-card.md)
+- [Memory conflict](./memory-conflict.md)
+- [Memory audit](./memory-audit.md)
+- [Working context](./working-context.md)
+- [Meetings README](./meetings_readme.md)
+
+## GitHub Contour Repository Templates
+
+- [repository-manifest.yml](./repository-manifest.yml)
+- [contour repository AGENTS.md](./contour_repository_AGENTS.md)
+- [contour repository README.md](./contour_repository_README.md)
+- [GitHub pull request template](./github_pull_request_template.md)
+
+## Development Templates
+
+- [Agent workflow](./agent_workflow.md)
+- [Test plan](./test_plan.md)
+- [Release checklist](./release_checklist.md)
+- [Changelog](./changelog.md)
+- [Incident runbook](./incident_runbook.md)
+
+## Other Templates
+
+- [Delegations per person](./delegations_per_person.md)
+- [Personal tasks](./personal_tasks.md)
+- [Legal/HR/finance task](./legal_hr_fin_task.md)
+- [Note](./note.md)
+- [Operational task](./operational_task.md)
+- [Owner decision packet](./owner_decision_packet.md)
+- [Recipe](./recipe.md)
+- [Exit interview](./exit-interview.md)

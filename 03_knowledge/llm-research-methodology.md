@@ -194,11 +194,12 @@ Compensation: before starting the research, determine: (1) what decision I am ma
 
 LLM training data consists of 60-70% English-language content. This results in a system bias:
 
-- **Geographic bias**: the model by default thinks in US/EU market patterns. For the Russian, Asian, Latin American context, best practices may not work.
-- **Cultural bias**: communication style, business norms, legal framework - everything is tied to the Anglo-Saxon tradition.- **Language bias**: in Russian, the model has access to less data and may give less accurate answers, especially for niche topics.
+- **Geographic bias**: the model by default thinks in US/EU market patterns. For non-US, non-EU, Asian, Latin American, and other local contexts, best practices may not work.
+- **Cultural bias**: communication style, business norms, and legal frameworks may be tied to Anglo-American assumptions.
+- **Language bias**: in some languages and niche domains, the model may have less training data and lower accuracy.
 
 **Compensation:**
-- Explicitly indicate geography and context: “for the Russian market / for a company in the CIS / for a Russian-speaking audience”
+- Explicitly indicate geography and context: "for this local market / for this legal environment / for this language audience"
 - Conduct some queries in English - this opens access to another layer of data
 - Double-check: “Does this pattern work in my market, or is it a Western specificity?”
 - For regulatory and legal issues - always verify through local sources
@@ -265,7 +266,7 @@ Before finalizing the results, check:- [ ] Are there any links to primary source
 - [Truth Triangulation Strategies (Medium / Ali Arsanjani)](https://dr-arsanjani.medium.com/enhancing-the-reliability-of-llms-truth-triangulation-strategies-to-minimize-hallucinations-15f97d603b3a) - practical strategies for triangulating the truth
 - [Vocal Minority: Psychology of Online Comments (MIT Sloan)](https://sloanreview.mit.edu/article/psychology-of-blog-comments-the-tyranny-of-the-vocal-minority/) - an exploration of the tyranny of the vocal minority
 
-### In Russian
+### In the User Language
 - [How to make LLM doubt answers (System Block)](https://sysblok.ru/nlp/nichego-krome-pravdy-kak-zastavit-llm-somnevatsja-v-svoih-otvetah/) - techniques for expressing uncertainty in LLM
 - [Reasoning-LLM: architecture and overview (Selectel)](https://selectel.ru/blog/reasoning-llm/) - reasoning models and their advantages
 

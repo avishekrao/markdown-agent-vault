@@ -62,7 +62,7 @@ which is [benefit], unlike [alternative] because [differentiator]. >>
 3. **<headline 3>** - why: <one sentence >>
 
 ### Filter table (5 axles)
-| Candidate | Visualization | Falsified | Brand-ownable | Rhythm | RU filter |
+| Candidate | Visualization | Falsified | Brand-ownable | Rhythm | Target-language filter |
 |----------|--------------|------------------|---------------|------|-----------|
 | 1        | …            | …                | …             | …    | …         |
 | 2        | …            | …                | …             | …    | …         |
@@ -95,7 +95,7 @@ which is [benefit], unlike [alternative] because [differentiator]. >>
 - [ ] Lacmus Trout/Ries: In the output above there should be a literal artifact of substitution - not an "internal mark".
 - [ ] Message-match: Does it match the ads that drive traffic?
 - [ ] Brand-specific noun in H1: Is there a specific noun-artifact of a product (act, escrow, cabinet, integration) rather than an abstract promise?
-- [ ] Hero in one language: no English inserts in Russian Hero and vice versa.
+- [ ] Hero in one language: no English inserts in target-language hero and vice versa.
 - [ ] Text clarity filter: no calques (solutions, optimization, seamless, ecosystem), no empty words, active verb in the asset.
 - [ ] Numbers/names/verbs are at least one word.
 
@@ -153,7 +153,7 @@ Each of the 10 candidates is mentally run through 5 filters:
 1. **Visualize* (Harry Dry): Do you draw a picture in your head in 1 second?
 2. **Falsify (Harry Dry): Can it be verified as true/false?
 3. **Brand-ownable** (Trout/Ries): Frame a competitor - sounds? If so, drop it.
-4. **Rhythm + clarity**: 5-9 words in Russian, active verb, no official ballast.
+4. **Rhythm + clarity**: 5-9 words in the target language, active verb, no official ballast.
 5. **Text clarity filter**: no empty words or calques (“solutions”, “optimization”, “seamless”,
    “unique”, “efficient”, “quality”, “innovative”, “ecosystem”.
 
@@ -169,7 +169,7 @@ passed”, but no substitution was made.
 
 Subhead is the second attempt to catch those whose H1 did not work the first time. Rules:
 
-- 1-2 lines on mobile, 16-25 words in Russian.
+- 1-2 lines on mobile, 16-25 words in the target language.
 - It does not repeat H1 in other words. A new quantum of meaning: either the strongest proof,
   Either the sharpest benefit, or removes the main objection.
 - Specificity is mandatory - a number, name, verb, specific action.
@@ -192,7 +192,7 @@ In the exit must be a checklist with instructions "how to check it to A/B". This
 - Three-question test Harry Dry.
 - Lacmus Trout/Ries.
 - Message-match with advertising message.
-- RU filter.
+- Target-language filter.
 
 If the user does not have a panel for the test - offer a minimum of: 5 colleagues + 5 people from the ICP
 Social network / messenger, 5 seconds each.
@@ -216,7 +216,7 @@ Warm - do not explain the problem again. If you don't define the stage, you writ
 One title is a guarantee of failure. If a product has multiple value props, it’s a few.
 Landings, not just Hero.
 
-**The Russian language requires its own amendments.** Calques from English ("solutions", "seamless", etc.).
+**Each target language requires its own editing rules.** Calques from English ("solutions", "seamless", etc.).
 “ecosystem” are weaknesses that make the text less specific. An active verb,
 A specific noun, a short sentence is your basic tools.
 

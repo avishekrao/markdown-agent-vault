@@ -3,7 +3,7 @@ id: markdown-agent-vault-readme
 type: index
 status: active
 created: 2026-04-30
-updated: 2026-05-02
+updated: 2026-07-13
 aliases:
   - "Markdown Agent Vault"
 tags: [vault, methodology, starter-pack]
@@ -14,109 +14,192 @@ source_path: "README.md"
 
 ## Essence
 
-This is the English mirror/adaptation of `markdown-agent-vault-ru` while the project is solo-maintained. It keeps the same structure and methodology in English: rules, folder structure, templates, skills, logs, and checks for maintaining a file workspace together with an AI agent.
-
-The sync policy may change after external contributions or an independent English-language audience appear. For the current policy, see [Sync Policy](./docs/sync-policy.md).
+This is a starter pack for an agent-ready Markdown vault: rules, folder structure, templates, skills, logs, and checks for maintaining a file workspace together with an AI agent.
 
 ## What It Solves
 
 A typical AI session often ends with:
 
-- the context remains in the chat;
-- files are downloaded, retold and forgotten;
-- the next session has to be introduced into the course again;
-- solutions, tasks, knowledge and sources diverge in different places.
+- context remains in the chat;
+- files are uploaded, summarized, and forgotten;
+- the next session has to be reintroduced to the work;
+- decisions, tasks, knowledge, and sources drift into different places.
 
-This kit makes the file system a persistent state layer:
+This starter pack turns the file system into a durable state layer:
 
-- `AGENTS.md` explains the workspace rules to the agent;
-- `00_inbox/` accepts new and unprocessed materials;
+- `AGENTS.md` explains the vault rules to the agent;
+- `00_inbox/` accepts new and unsorted materials;
 - `01_now/` stores active projects and current work;
-- `03_knowledge/` stores reused knowledge;
-- `log.md`, `plan.md`, `tasks.md` and `context.md` help the new session continue without guesswork.
+- `03_knowledge/` stores reusable knowledge;
+- `log.md`, `plan.md`, `tasks.md`, and `context.md` help the next session continue without guessing;
+- `project-creator` creates a complete project: the agent writes the plan, execution queue, context, log, and entry README;
+- `vault-memory` separates current memory from archive: old meetings and logs remain evidence, but do not replace the current picture;
+- the trust layer for memory makes important claims carry type, source, basis, confidence, and verification date;
+- `context-compression` compresses recurring meeting history so the agent does not reread the entire archive or treat outdated decisions as current.
 
-## For whom it is useful
+An additional mode is the [GitHub contour repository](./docs/github-contour-repositories.md): a separate repository for a long-lived work contour, where the agent prepares changes through a branch and change request, and the human gets a clear risk/result summary.
 
-The kit is useful if you:
+## Who It Is For
 
-- you work with agents who can read and change local files;
-- take notes in Markdown or Obsidian;
-- you want the project state to survive individual chats;
-- want a clear order for incoming materials, tasks, solutions and knowledge;
-- you prefer regular files rather than closed “memory” inside the service.
+This kit is useful if you:
+
+- work with agents that can read and change local files;
+- keep notes in Markdown or Obsidian;
+- want project state to survive individual chats;
+- want a clear order for incoming materials, tasks, decisions, and knowledge;
+- prefer regular files over closed service-side memory.
 
 This is not:
 
-- SaaS application;
-- Obsidian plugin;
-- magical memory;
-- replacement of the task tracker;
+- a SaaS application;
+- an Obsidian plugin;
+- magic memory;
+- a task tracker replacement;
 - a universal methodology for all people and cultures.
 
-## First launch
+## Usage Modes
+
+### Personal Local Vault
+
+The default mode: one owner works with an agent inside a local folder. Project state lives in files, and the agent follows `AGENTS.md`, routing rules, indexes, and logs.
+
+### GitHub Contour Repository
+
+A mode for a team, product, client, or another long-lived area of work. One contour lives in one repository. Boundaries are described by `repository-manifest.yml`; changes go through change requests; private data is not mixed into the ordinary repository layer.
+
+See [GitHub contour repositories](./docs/github-contour-repositories.md) and the [example contour repository](./examples/github-contour-repository/README.md).
+
+## Installation
+
+This repository is not installed as an app. It is a starter folder for a Markdown vault used with an AI agent.
+
+### Option 1: Git
+
+```bash
+git clone https://github.com/dzhokhov/markdown-agent-vault.git my-vault
+cd my-vault
+```
+
+### Option 2: ZIP
+
+Download the repository as a ZIP from GitHub and unpack it into a separate folder, for example `my-vault`.
+
+## First Launch
 
 1. Clone the repository or use it as a template in a safe test folder.
 2. Open the folder in an agent that can work with files.
 3. Tell the agent:
 
    ```text
-   Open this folder as your working storage. First read AGENTS.md, START_HERE.md, QUICKSTART.md and ONBOARDING.md. Explain the folder structure, the main rules and walk me through one safe test project with a small file in 00_inbox/.
+   Open this folder as a working vault. First read AGENTS.md, START_HERE.md, QUICKSTART.md, and ONBOARDING.md. Explain the folder structure and main rules, then walk me through one safe test project with a small file in 00_inbox/.
    ```
-4. Place a small test file in `00_inbox/`.
-5. Ask the agent to create a training project, update links and log the event.
-6. Compare the result with the example [examples/first-session](./examples/first-session/README.md).
+
+4. Put a small test file in `00_inbox/`.
+5. Ask the agent to create a training project through `project-creator`, update links, and record the event in the log.
+6. Compare the result with [examples/first-session](./examples/first-session/README.md).
+
+A plain chatbot without local file access cannot fully use this methodology. You need an agent that can see the folder, read rules, and propose or make file changes.
+
+## Compatible Agents
+
+Any agent that can work with a local folder can use this methodology: read Markdown files, create new files, modify existing ones, and run simple checks.
+
+| Agent | When to choose it |
+|---|---|
+| [OpenAI Codex](https://github.com/openai/codex) | When you need an agent in a terminal, editor, or desktop app; it works well with local folders and `AGENTS.md` rules. |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview) | When you prefer a terminal/editor agent that reads a project, changes files, and runs commands. |
+| Claude Cowork | When you work in Claude Desktop and want to give an agent access to the vault folder. Limitation: Cowork does not automatically read `skills/` as a live skill library. Use [skills/sync-cowork-skills.sh](./skills/sync-cowork-skills.sh) as a workaround. |
+| [Cursor](https://cursor.com/) | When you want to work inside a VS Code-like editor with an AI assistant over the whole folder. |
+| [Windsurf](https://windsurf.com/) | Another editor with agentic mode and project understanding. |
+| [Cline](https://cline.bot/) | Editor extension for running different models while keeping actions under explicit control. |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Google's terminal agent; useful when you want an open tool with file and command access. |
+| [Google Antigravity](https://antigravity.google/) | Useful when you want to manage and monitor several agents over different working folders. |
+| [GitHub Copilot coding agent](https://docs.github.com/copilot/concepts/coding-agent/about-copilot-coding-agent) | Useful when the vault is on GitHub and you want changes through issues and pull requests. |
+
+The methodology is not tied to one provider. The key requirement is that the agent reads `AGENTS.md` first and follows routing rules for files, logs, tasks, and knowledge.
+
+### Note on Claude Cowork
+
+Claude Cowork can work with this vault, but skills from `skills/` are not picked up automatically as a single live source.
+
+The starter pack includes a sync script:
+
+```bash
+./skills/sync-cowork-skills.sh
+```
+
+After changing a skill, rerun synchronization or check status:
+
+```bash
+./skills/sync-cowork-skills.sh --status
+./skills/sync-cowork-skills.sh
+```
+
+By default, the script syncs all skills that contain `SKILL.md`. You can restrict the list through an environment variable:
+
+```bash
+COWORK_SKILLS="research parking resume" ./skills/sync-cowork-skills.sh
+```
 
 ## Navigation
 
-| Path | Destination |
+| Path | Purpose |
 |---|---|
-| [AGENTS.md](./AGENTS.md) | Rules for agent operation inside the storage |
+| [AGENTS.md](./AGENTS.md) | Rules for agent operation inside the vault |
 | [START_HERE.md](./START_HERE.md) | Short entry for the first session |
 | [ONBOARDING.md](./ONBOARDING.md) | Detailed onboarding |
 | [QUICKSTART.md](./QUICKSTART.md) | Quick practical start |
-| [00_inbox/](./00_inbox/README.md) | New and unassembled materials |
+| [00_inbox/](./00_inbox/README.md) | New and unsorted materials |
 | [01_now/](./01_now/README.md) | Active projects and current work |
-| [02_domains/](./02_domains/README.md) | Long lasting areas of life or work |
-| [03_knowledge/](./03_knowledge/README.md) | Reused knowledge and methodologies |
-| [04_logs/](./04_logs/README.md) | Timeline, Reviews and Solution Logs |
-| [90_archive/](./90_archive/README.md) | Completed and outdated |
-| [meta/](./meta/README.md) | Rules, templates and service indexes |
-| [skills/](./skills/README.md) | Skills for repetitive types of tasks |
+| [02_domains/](./02_domains/README.md) | Long-lived areas of life or work |
+| [03_knowledge/](./03_knowledge/README.md) | Reusable knowledge and methodologies |
+| [04_logs/](./04_logs/README.md) | Timeline, reviews, and decision logs |
+| [90_archive/](./90_archive/README.md) | Completed and outdated material |
+| [meta/](./meta/README.md) | Rules, templates, and service indexes |
+| [meta/memory/](./meta/memory/README.md) | Memory ledger, anti-memory, and conflicts |
+| [skills/](./skills/README.md) | Skills for recurring task types |
 | [scripts/](./scripts/README.md) | Local checks |
-| [examples/first-session/](./examples/first-session/README.md) | Minimal example of the first loop |
+| [examples/first-session/](./examples/first-session/README.md) | Minimal first-loop example |
+| [docs/github-contour-repositories.md](./docs/github-contour-repositories.md) | Guide for separate GitHub repositories by contour |
+| [examples/github-contour-repository/](./examples/github-contour-repository/README.md) | Minimal GitHub contour repository example |
 
-## How is it different?
+## How Is It Different?
 
-| Alternative | What it gives | What makes this kit different |
+| Alternative | What it gives | What this kit adds |
 |---|---|---|
-| One `AGENTS.md` | Agent Rules of Conduct | The entire file architecture is here: inboxes, projects, knowledge, logs, templates, skills and routing |
-| Basic Memory and similar tools | Layer of memory and search by notes | Here the focus is on the file status of projects, solutions, tasks and sources |
-| Cline Memory Bank | Design Memory Files for Development | Here the approach is broader: not only code, but also research, meetings, knowledge, input and journals |
-| Obsidian plugins | Interface features and automation inside Obsidian | This is not a plugin, but a file convention and operating procedure for the agent |
-| Regular Obsidian Storage | Notes and links for a person | Rules for the agent, project state files, life cycle and checks are added here |
+| One `AGENTS.md` | Agent behavior rules | A full file architecture: inbox, projects, knowledge, logs, templates, skills, and routing |
+| Basic Memory and similar tools | Memory layer and note search | File-based state for projects, decisions, tasks, and sources |
+| Cline Memory Bank | Project memory files for development | A broader method: not only code, but also research, meetings, knowledge, incoming materials, and logs |
+| Obsidian plugins | Interface features and automation inside Obsidian | This is a file convention and agent operating procedure, not a plugin |
+| Ordinary Obsidian vault | Notes and links for a human | Agent rules, project state files, lifecycle rules, and checks |
 
 ## Maturity
 
-Status: early English mirror/adaptation of the Russian methodology.
+Status: early public starter pack.
 
 Done:
 
 - portable folder structure;
 - agent rules;
 - project templates;
-- routing of materials;
+- autonomous project creation through `project-creator`;
+- material routing;
+- current-memory rule and trust layer for claims;
+- compressed history for recurring meetings;
 - onboarding;
 - skills;
 - local checks;
-- a minimal example of the first loop.
+- minimal first-loop example;
+- minimal GitHub contour repository mode with manifest, templates, example, and validation.
 
 Not ready yet:
 
-- broad instructions for all agent tools;
-- external user examples;- stable compatibility with any agent;
+- broad instructions for every agent tool;
+- external user examples;
+- stable compatibility with any agent;
 - mature public contribution model.
 
-## Check
+## Checks
 
 From the repository root:
 
@@ -126,6 +209,28 @@ python3 scripts/check_links.py
 python3 scripts/check_forbidden_markers.py
 ```
 
+To validate the GitHub contour repository example:
+
+```bash
+python3 scripts/validate_contour_repo.py examples/github-contour-repository
+```
+
 ## License
 
 MIT. See [LICENSE](./LICENSE).
+
+<!-- AUTOGEN-NAV START -->
+## Autogenerated links
+### Directory files
+- [CHANGELOG.md](./CHANGELOG.md)
+- [CONTRIBUTING.md](./CONTRIBUTING.md)
+- [PULL_REQUEST_TEMPLATE.md](./PULL_REQUEST_TEMPLATE.md)
+- [ROADMAP.md](./ROADMAP.md)
+- [SUPPORT.md](./SUPPORT.md)
+### Subdirectories
+- [.github](.github/README.md)
+- [03_knowledge](./03_knowledge/README.md)
+- [docs](./docs/README.md)
+- [meta](./meta/README.md)
+- [skills](./skills/README.md)
+<!-- AUTOGEN-NAV END -->

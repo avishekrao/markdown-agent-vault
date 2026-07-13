@@ -4,6 +4,33 @@ All notable public changes are tracked here.
 
 This project uses early semantic versions. Until `v1.0.0`, breaking changes to structure or rules may happen when they make the starter pack clearer or safer.
 
+## Unreleased
+
+### Added
+
+- Added `project-creator`, a skill for creating complete active projects with agent-written `plan.md`, `tasks.md`, `context.md`, `log.md`, and `README.md`.
+- Added autonomous planning guidance for agents, including Intent Lock, Owner Interaction Policy, Quality Criteria, and stricter question budgeting.
+- Added `vault-memory`, a rule that separates current project memory from archive sources such as old logs, meetings, drafts, and inbox files.
+- Added `meta/memory/` with memory ledger, anti-memory rules, and conflict index.
+- Added memory trust templates: memory card, memory conflict, working context, and memory audit.
+- Added `/memory-audit` prompt guidance for reviewing memory quality.
+- Added `context-compression`, a skill for maintaining compact meeting history in `meetings/README.md`.
+- Added `meetings_readme.md` template for compressed meeting history, decision chains, stale decisions, open questions, and anchor meetings.
+- Added installation guidance and a compatibility table for common file-capable agents.
+- Added Claude Cowork notes and the bundled `skills/sync-cowork-skills.sh` synchronization script.
+- Added intent reconstruction guidance for underspecified agent requests.
+- Added GitHub contour repository mode: guide, rule, templates, example repository, manifest validation, and one-command contour validation.
+- Added `repository-manifest.yml` as a machine-readable boundary file for contour repositories.
+- Added `examples/github-contour-repository/` as a safe minimal contour repository example.
+- Added `scripts/check_repository_manifest.py` and `scripts/validate_contour_repo.py`.
+
+### Changed
+
+- Updated `AGENTS.md` so agents route new project creation through `project-creator`, read current memory before archive sources, and record important memory changes.
+- Updated write protocol, task routing, project templates, and meeting processing around current memory, trust fields, and agent-authored project plans.
+- Updated onboarding, quickstart, README, and roadmap to explain the local-vault mode and the GitHub contour-repository mode.
+- Updated pull request guidance for private-data checks and contour repository validation.
+
 ## [v0.2.1] - 2026-05-02
 
 ### Removed
@@ -14,18 +41,16 @@ This project uses early semantic versions. Until `v1.0.0`, breaking changes to s
 
 ## [v0.2.0] - 2026-05-02
 
-Full English mirror of the Russian methodology.
+Full methodology package for the starter vault.
 
 ### Added
 
-- Full translated methodology layer from the Russian repository: `meta/`, `meta/rules/`, `meta/templates/`, `03_knowledge/`, and the complete `skills/` library.
-- Additional release notes for prior Russian-version releases now represented in the English repository.
-- Sync policy describing the current `mirror while solo-maintained` mode.
+- Full methodology layer: `meta/`, `meta/rules/`, `meta/templates/`, `03_knowledge/`, and the complete `skills/` library.
+- Additional release notes for prior public-package releases.
 
 ### Changed
 
-- `README.md` now states that this repository is the English mirror/adaptation while the project is solo-maintained.
-- Local checks now allow the Russian repository link only in `docs/sync-policy.md`.
+- `README.md` now describes this repository as a standalone agent-ready Markdown vault starter pack.
 - Code comments, docstrings, and user-facing messages remain English without changing script logic.
 
 ## [v0.1.2] - 2026-05-02
@@ -48,7 +73,7 @@ Full English mirror of the Russian methodology.
 
 ### Changed
 
-- `QUICKSTART.md` now points English-speaking users to the English first-run files while preserving the Russian originals.
+- `QUICKSTART.md` now points users to the first-run files.
 
 ## [v0.1.0] - 2026-05-02
 

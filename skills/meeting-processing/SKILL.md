@@ -1,70 +1,76 @@
 ---
 name: meeting-processing
 description: >
-Processing meetings, transcripts and notes: extracting solutions, tasks, facts,
-Risks and sustainable knowledge with routing by storage structure.
+  Processes meetings, transcripts, and notes: extracts decisions, tasks, facts,
+  risks, and durable knowledge, then routes them through the vault structure.
+  For recurring meetings with history, use context-compression first so the
+  agent does not read the whole meeting archive.
 ---
 
 # Meeting Processing
 
-## When to use
+## When to Use
 
-Use this skill when the owner asks:
+Use this skill when the owner asks to:
 
-- to sort out the meeting;
-- process the decryption;
-- identify solutions and tasks;
-- make a brief sammari conversation;
-- Put the meeting notes in the vault.
+- process a meeting;
+- process a transcript;
+- extract decisions and tasks;
+- make a short meeting summary;
+- route meeting notes into the vault.
 
-## Entrance
+## Input
 
-- Meeting text, transcript, notes or a link to the file.
+- Meeting text, transcript, notes, or a link to the file.
 - Contour or project, if known.
-- If the outline is unclear, ask the owner a short question.
+- If the contour is unclear, ask one short question.
 
 ## Process
 
-### 1. Identify a meeting place
+### 1. Identify the Meeting Location
 
-Find out if the meeting relates to:
+Determine whether the meeting belongs to:
 
-- active project in `01_now/projects/`;
-- constant area in `02_domains/`;
-- operating circuit in `01_now/ops/`;
-- personal obligation of the owner;
-- Incoming material with no clear place.
+- an active project in `01_now/projects/`;
+- a long-lived area in `02_domains/`;
+- an operating contour in `01_now/ops/`;
+- a personal obligation of the owner;
+- incoming material with no clear destination.
 
-If the place is ambiguous, don't guess.
+If the place is ambiguous, do not guess.
 
-### 2. Extract layers
+If the meeting is recurring, refers to prior discussions, or the meetings folder already has more than three old summaries, use [context-compression](../context-compression/SKILL.md) first. The output should identify which old meetings to read fully, which decisions are stale, which questions are open, and which old files are covered by compressed history.
 
-Divide the content into:
+### 2. Extract Layers
+
+Separate content into:
 
 - decisions;
-- agent's tasks;
-- tasks of the owner;
-- Delegating to other people;
+- agent tasks;
+- owner tasks;
+- delegations to other people;
 - blockers;
-- sustainable knowledge;
+- durable knowledge;
 - episodic facts;
 - unanswered questions.
 
-### 3. File it up.
+For important claims, distinguish fact, decision, hypothesis, assumption, and plan. A participant's statement does not become a decision without authority and explicit basis. An old plan does not become current reality without verification. If an old source conflicts with the current picture, do not smooth it into a neat summary; record a conflict or open question according to [vault-memory.md](../../meta/rules/vault-memory.md).
 
-| Layer | Where to write |
+### 3. Route to Files
+
+| Layer | Destination |
 |---|---|
-| Solution | `log.md` project or contour |
-| Sustainable knowledge | `context.md` or `03_knowledge/` |
-| Agent's current move | `tasks.md` |
-| Target, milestone, blocker | `plan.md` |
+| Decision | project or contour `log.md` |
+| Durable knowledge | `context.md` or `03_knowledge/` |
+| Current agent step | `tasks.md` |
+| Goal, milestone, blocker | `plan.md` |
 | Delegation | `01_now/ops/<contour>/delegations/<person>.md` |
-| Personal obligation of the owner | `01_now/personal/tasks.md` |
-| Episodic fact | meeting file, section `## Mentioned in passing` |
+| Owner personal obligation | `01_now/personal/tasks.md` |
+| Episodic fact | meeting file, `## Mentioned in passing` |
 
-### 4. Create a meeting file
+### 4. Create a Meeting File
 
-If the meeting is important, create a separate meeting file next to the project or outline:
+If the meeting is important, create a separate meeting file near the project or contour:
 
 ```text
 meetings/meeting-YYYY-MM-DD-topic.md
@@ -73,41 +79,42 @@ meetings/meeting-YYYY-MM-DD-topic.md
 Structure:
 
 ```markdown
-# Meeting YYYY-MM-DD: Theme
+# Meeting YYYY-MM-DD: Topic
 
-## The essence
+## Essence
 
 ## Participants
 
 ## Decisions
 
-## Challenges
+## Tasks
 
-## Sustainable knowledge
+## Durable Knowledge
 
 ## Questions
 
-## Mentioned in passing
+## Mentioned in Passing
 
-## References
+## Links
 ```
 
-### 5. Check the result.
+### 5. Check the Result
 
 Before finishing, check:
 
-- Solutions are not lost in Sammari.
+- decisions were not lost inside a summary;
 - tasks are not mixed with facts;
-- `tasks.md` is not a store of thought.
-- The blockers are in `plan.md`, not `tasks.md`.
-- people not added without verification;
-- A new meeting is reached through the `README.md` or another index.
+- `tasks.md` did not become a place for reflection;
+- blockers are in `plan.md`, not `tasks.md`;
+- people were not added without verification;
+- the new meeting is reachable through `README.md` or another index;
+- if current picture, claim trust, or a memory conflict changed, [ledger.md](../../meta/memory/ledger.md) has an entry.
 
-## Exit
+## Output
 
-Give it back to the owner:
+Report to the owner:
 
-- created or modified;
-- What decisions are recorded;
-- What tasks have arisen;
-- Which needs clarification.
+- what was created or changed;
+- which decisions were recorded;
+- which tasks appeared;
+- what needs clarification.

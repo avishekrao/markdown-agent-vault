@@ -18,9 +18,9 @@ Full source (if available): see the link in `SKILL.md`.
    because [differentiator].” Lacmus: set up a competitor, does that sound? If so, copy it.
 3. **10 candidates H1.** Different range: PAS/AIDA, active verb, triad, contrast, number,
    Brand-ownable provocation. The goal is range, not "one masterpiece."
-4. ** Run through 5 filters.** Visualize / Falsify / Brand-ownable / Rhythm + clarity / RU filter.
+4. ** Run through 5 filters.** Visualize / Falsify / Brand-ownable / Rhythm + clarity / Target-language filter.
    There are 3 finalists out of 10.
-5. **Subhead.** 1-2 lines, 16-25 words in Russian. Does not repeat H1 - carries a new quantum:
+5. **Subhead.** 1-2 lines, 16-25 words in the target language. Does not repeat H1 - carries a new quantum:
    proof, benefit, withdrawal of objection. Specifics are mandatory.
 6. H1 + subhead + proof + primary CTA + visual hint. One primary CTA.
    CTA - verb + object, 2-4 words. Proof is specific (digit/name/KPI).
@@ -61,7 +61,7 @@ The three "yes/yes/no" headline is strong.
 
 ---
 
-## RU text clarity filter
+## Target-language clarity filter
 
 **Stop words and tracings that will fail any Hero:**
 - Solutions (as synonymous with products)
@@ -77,7 +77,7 @@ The three "yes/yes/no" headline is strong.
 - Verbs > Communions (“We pay” > “Making payments”).
 - Specifics > Evaluation ("3 minutes" > "quick").
 - One thought = one sentence.
-- In Russian Hero works well 5-9 words.
+- In target-language hero works well 5-9 words.
 - An active verb in the beginning is a powerful technique.
 
 ---
@@ -109,7 +109,7 @@ The three "yes/yes/no" headline is strong.
 - **Brand-ownable - mandatory filter.**Trout/Ries Lacmus passes every candidate.
 - **One Hero = one quantum of meaning.** Several value props = several landing pages.
 - The Schwartz stage is a solution, not a theory. You write blindly without her.
-- **Russian is not English.** Calques make the text weaker and less specific.
+- **The target language is not a word-for-word copy of English.** Calques make the text weaker and less specific.
 
 ---
 

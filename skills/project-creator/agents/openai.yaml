@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Creator"
+  short_description: "Creates projects with an autonomous plan"
+  default_prompt: "Use $project-creator to create a project from the current chat context."

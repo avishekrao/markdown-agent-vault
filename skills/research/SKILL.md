@@ -125,7 +125,7 @@ status: active
 created: <YYYY-MM-DD>
 updated: <YYYY-MM-DD>
 aliases:
-  - "Understandable name in Russian"
+  - "Readable local-language name"
 tags: [knowledge, research, <thematic tags>]
 source_path: "<resolved_path_from_phase_0>"
 freshness: seasonal
@@ -172,7 +172,7 @@ What to do with the results: decision, additional research, specific action >>
 
 ### Rules of registration
 
-- Russian language, unless the user requests otherwise
+- User language, unless the user requests otherwise
 - Specific figures and facts, not general words
 - Each statement with confidence marking
 - Sources are divided by type (academic/practical/commercial)

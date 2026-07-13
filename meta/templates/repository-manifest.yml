@@ -1,0 +1,79 @@
+schema_version: 1
+
+repo:
+  name: "example-contour-repository"
+  contour: "example-contour"
+  owner: "owner-name"
+  main_branch: "main"
+  visibility: "private" # public | private | internal
+  data_class: "ordinary" # ordinary | private | mixed
+  durable_source_of_truth: true
+
+human_model:
+  primary_audience:
+    - "people who work on this contour"
+  review_owner: "owner-name"
+  escalation: "Ask the owner when contour boundary, private data, deletion, or strategic decision is unclear."
+
+access:
+  default_role: "reader"
+  write_roles:
+    - "owner"
+  private_data_allowed: false
+
+write_model:
+  default_change_path: "branch-and-change-request" # branch-and-change-request | direct-main-only
+  direct_main_allowed_for:
+    - "typos in README"
+  protected_paths:
+    - "repository-manifest.yml"
+    - "AGENTS.md"
+
+agent_policy:
+  read_first:
+    - "AGENTS.md"
+    - "repository-manifest.yml"
+    - "README.md"
+    - "context.md"
+  may_edit_without_asking:
+    - "README.md navigation links"
+    - "log.md short event entries"
+  ask_before:
+    - "changing project goals"
+    - "moving or deleting files"
+    - "touching private or sensitive data"
+  never_commit:
+    - "secrets"
+    - "credentials"
+    - "raw private exports"
+
+meeting_policy:
+  required_in_this_repository: false
+  required_frontmatter:
+    - "id"
+    - "type"
+    - "status"
+    - "created"
+    - "updated"
+    - "source_path"
+  allowed_meeting_scope_values:
+    - "contour"
+    - "project"
+  allowed_audience_values:
+    - "internal"
+    - "public"
+    - "private"
+
+validation:
+  required_before_change_request:
+    - "python3 scripts/validate_contour_repo.py ."
+
+action_log:
+  file: "log.md"
+  max_entry_lines: 10
+
+questions_for_user:
+  when_ambiguous_contour: "Which contour owns this change?"
+  when_private_data_risk: "Can this repository contain the referenced private data?"
+  when_meeting_material: "Should this meeting be stored here or only linked from another contour?"
+  when_deleting_or_moving: "Confirm that this file should be deleted or moved."

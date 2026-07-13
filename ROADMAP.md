@@ -14,19 +14,9 @@ Goals:
 - one minimal example shows the first-session workflow;
 - local validation scripts run without external services.
 
-## v0.2.x - Full Methodology Package
+## v0.2.0 - Project Creation, Memory, and Contour Repositories
 
 Status: released.
-
-Goals:
-
-- publish the broader methodology layer in this repository;
-- keep the package usable as a standalone starter vault;
-- remove materials with unclear redistribution status.
-
-## Next - Project Creation, Memory, and Contour Repositories
-
-Status: prepared locally.
 
 Goals:
 

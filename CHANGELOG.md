@@ -4,7 +4,7 @@ All notable public changes are tracked here.
 
 This project uses early semantic versions. Until `v1.0.0`, breaking changes to structure or rules may happen when they make the starter pack clearer or safer.
 
-## Unreleased
+## [v0.2.0] - 2026-07-13
 
 ### Added
 
@@ -30,28 +30,6 @@ This project uses early semantic versions. Until `v1.0.0`, breaking changes to s
 - Updated write protocol, task routing, project templates, and meeting processing around current memory, trust fields, and agent-authored project plans.
 - Updated onboarding, quickstart, README, and roadmap to explain the local-vault mode and the GitHub contour-repository mode.
 - Updated pull request guidance for private-data checks and contour repository validation.
-
-## [v0.2.1] - 2026-05-02
-
-### Removed
-
-- Removed the text-editing skill that referenced a named third-party editing methodology.
-- Removed the bundled stop-word reference list for that skill.
-- Removed links and routing references to the deleted skill from adjacent skills and indexes.
-
-## [v0.2.0] - 2026-05-02
-
-Full methodology package for the starter vault.
-
-### Added
-
-- Full methodology layer: `meta/`, `meta/rules/`, `meta/templates/`, `03_knowledge/`, and the complete `skills/` library.
-- Additional release notes for prior public-package releases.
-
-### Changed
-
-- `README.md` now describes this repository as a standalone agent-ready Markdown vault starter pack.
-- Code comments, docstrings, and user-facing messages remain English without changing script logic.
 
 ## [v0.1.2] - 2026-05-02
 

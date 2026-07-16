@@ -4,6 +4,12 @@ All notable public changes are tracked here.
 
 This project uses early semantic versions. Until `v1.0.0`, breaking changes to structure or rules may happen when they make the starter pack clearer or safer.
 
+## [Unreleased]
+
+### Changed
+
+- Clarified the README opening to describe the project as a file-based starter pack, distinguish it from plugins and hosted memory services, and add a concrete cross-session use case.
+
 ## [v0.2.0] - 2026-07-13
 
 ### Added

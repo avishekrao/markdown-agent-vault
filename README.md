@@ -14,7 +14,9 @@ source_path: "README.md"
 
 ## Essence
 
-This is a starter pack for an agent-ready Markdown vault: rules, folder structure, templates, skills, logs, and checks for maintaining a file workspace together with an AI agent.
+Markdown Agent Vault is a file-based starter pack for organizing projects, notes, decisions, and reusable knowledge with an AI agent that can read and edit local files. It provides a ready-made folder structure, Markdown templates, agent rules, logs, and local checks. It is not a plugin, application, or hosted memory service.
+
+Use it when you want an AI agent to continue work across sessions by reading project state from files instead of relying only on chat history.
 
 ## What It Solves
 
@@ -25,7 +27,7 @@ A typical AI session often ends with:
 - the next session has to be reintroduced to the work;
 - decisions, tasks, knowledge, and sources drift into different places.
 
-This starter pack turns the file system into a durable state layer:
+This starter pack keeps project state in ordinary files that both you and the agent can read:
 
 - `AGENTS.md` explains the vault rules to the agent;
 - `00_inbox/` accepts new and unsorted materials;

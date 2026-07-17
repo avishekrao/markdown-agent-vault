@@ -9,6 +9,7 @@ This project uses early semantic versions. Until `v1.0.0`, breaking changes to s
 ### Changed
 
 - Clarified the README opening to describe the project as a file-based starter pack, distinguish it from plugins and hosted memory services, and add a concrete cross-session use case.
+- Clarified the GitHub contour repository example with a realistic team scenario, safe-to-commit boundaries, human review guidance, and a failure case.
 
 ## [v0.2.0] - 2026-07-13
 
